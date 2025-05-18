@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const badgeNotifIcon = document.getElementById('badge-notif-icon');
     const badgeNotifName = document.getElementById('badge-notif-name');
     const badgeNotifDescription = document.getElementById('badge-notif-description');
+    const clickToCorrectHint = document.getElementById('click-to-correct-hint');
 
     // --- Game State ---
     let sentences = [];
@@ -169,8 +170,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = DragCard(part, part); // Label is same as part for now
             partsTrayContainer.appendChild(card);
         });
-        // Re-initialize drag and drop for newly created cards
-        // Note: This assumes SentenceBoard is already rendered or will be soon for the droppables
+        
+        // Add or update the hint text
+        if (clickToCorrectHint) {
+            clickToCorrectHint.textContent = "Pomyliłeś się? Kliknij na słowie, aby usunąć odpowiedź.";
+            clickToCorrectHint.style.display = 'block'; // Make sure it's visible
+        } else {
+            // Fallback if element wasn't in HTML, create and append it (less ideal)
+            const hintElement = document.createElement('p');
+            hintElement.id = 'click-to-correct-hint';
+            hintElement.className = 'click-hint';
+            hintElement.textContent = "Pomyliłeś się? Kliknij na słowie, aby usunąć odpowiedź.";
+            partsTrayContainer.insertAdjacentElement('afterend', hintElement);
+        }
+
         initializeDragAndDrop('.drag-card', '.word-slot', handleDrop);
     }
 
@@ -217,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (slotElement && userAnswers[tokenIndex]) {
             delete userAnswers[tokenIndex];
             slotElement.textContent = currentSentenceData.tokens[tokenIndex].word; // Restore original word
-            slotElement.classList.remove('correct-drop', 'incorrect-drop', 'assigned');
+            slotElement.classList.remove('correct-drop', 'incorrect-drop', 'assigned', 'partial-correct-drop');
             slotElement.removeAttribute('data-assigned-part');
             console.log(`Usunięto odpowiedź dla tokenu ${tokenIndex}`);
         }
@@ -227,16 +240,14 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`Upuszczono '${partOfSpeech}' na token index ${tokenIndex}`);
         userAnswers[tokenIndex] = partOfSpeech;
         
-        // Visual feedback on the slot
         if (droppedOnElement) {
-            if (!droppedOnElement.textContent.startsWith(currentSentenceData.tokens[tokenIndex].word)) {
-                droppedOnElement.textContent = currentSentenceData.tokens[tokenIndex].word;
-            }
+            // Always reset to the original word first
+            droppedOnElement.textContent = currentSentenceData.tokens[tokenIndex].word;
+            // Then append the new part of speech
             droppedOnElement.textContent += ` (${partOfSpeech})`;
-            droppedOnElement.classList.add('assigned'); // General class for styling assigned slots
+            droppedOnElement.classList.add('assigned');
             droppedOnElement.dataset.assignedPart = partOfSpeech;
         }
-        // Note: Correct/Incorrect feedback will be applied after clicking "Check Answers"
     }
 
     checkAnswersButton.addEventListener('click', () => {
