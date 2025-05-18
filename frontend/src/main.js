@@ -4,7 +4,7 @@ import { initializeDragAndDrop } from './drag.js';
 import { scorer } from './scorer.js';
 import { ResultView } from './components/ResultView.js';
 import { getXP, getLevel, addXP, getXPForNextLevel, getLevelProgressPercentage, checkAndAwardBadges, resetGamification, getEarnedBadges, BADGES as DefinedBadges } from './gamification.js';
-import { initOnboarding, resetOnboardingState } from './onboardingManager.js';
+import { initOnboarding, resetOnboardingState, initTooltips } from './onboardingManager.js';
 
 // --- Service Worker Registration ---
 if ('serviceWorker' in navigator) {
@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         initializeDragAndDrop('.drag-card', '.word-slot', handleDrop);
+        initTooltips(); // Call initTooltips after cards are rendered
     }
 
     function loadSentence(index) {

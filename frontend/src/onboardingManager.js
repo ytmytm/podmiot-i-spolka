@@ -236,4 +236,4 @@ async function initOnboarding() {
     }
 }
 
-export { initOnboarding, resetOnboardingState }; 
+export { initOnboarding, resetOnboardingState, initTooltips }; 
