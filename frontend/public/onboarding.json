@@ -89,13 +89,62 @@
     {
       "id": "tooltip_drag_card_okolicznik",
       "targetElement": ".drag-card[data-part-of-speech='Okolicznik']",
-      "text": "Okolicznik: Określa czasownik (czynność). Mówi nam więcej o tym, jak, gdzie, kiedy lub dlaczego coś się dzieje. Odpowiada na pytania: jak? gdzie? kiedy? po co? dlaczego? Np. 'Ptak śpiewa (jak?) głośno' - 'głośno' to okolicznik.",
+      "text": "Okolicznik: Ogólnie mówi nam więcej o czynności (czasowniku) - np. jak, gdzie, kiedy jest wykonywana. Poniżej znajdziesz bardziej szczegółowe rodzaje okoliczników!",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik_miejsca",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Miejsca']",
+      "text": "Okolicznik Miejsca: Wskazuje, GDZIE coś się dzieje. Pytania: gdzie? dokąd? skąd? którędy? Np. 'Kot śpi (gdzie?) na kanapie'.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik_czasu",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Czasu']",
+      "text": "Okolicznik Czasu: Mówi nam, KIEDY coś się dzieje. Pytania: kiedy? od kiedy? do kiedy? jak długo? Np. 'Pójdziemy do kina (kiedy?) jutro'.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik_sposobu",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Sposobu']",
+      "text": "Okolicznik Sposobu: Opisuje, W JAKI SPOSÓB czynność jest wykonywana. Pytania: jak? w jaki sposób? Np. 'Dziecko biegnie (jak?) szybko'.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik_celu",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Celu']",
+      "text": "Okolicznik Celu: Wyjaśnia, PO CO lub W JAKIM CELU coś się robi. Pytania: po co? w jakim celu? Np. 'Uczę się (po co?) żeby zdać egzamin'.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik_przyczyny",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Przyczyny']",
+      "text": "Okolicznik Przyczyny: Wskazuje, DLACZEGO coś się stało. Pytania: dlaczego? z jakiego powodu? Np. 'Płakał (dlaczego?) z radości'.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik_warunku",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Warunku']",
+      "text": "Okolicznik Warunku: Mówi, POD JAKIM WARUNKIEM coś się stanie. Pytania: pod jakim warunkiem? w razie czego? Np. '(Pod jakim warunkiem?) Jeśli będzie ładna pogoda, pójdziemy na spacer'.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik_przyzwolenia",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Przyzwolenia']",
+      "text": "Okolicznik Przyzwolenia: Wskazuje na coś, co mogłoby przeszkodzić, ale nie przeszkodziło. Pytania: mimo co? mimo czego? Np. '(Mimo czego?) Mimo deszczu, wyszli na dwór'.",
       "position": "bottom",
       "dynamic": true
     },
     {
       "id": "tooltip_drag_card_other",
-      "targetElement": ".drag-card:not([data-part-of-speech='Podmiot']):not([data-part-of-speech='Orzeczenie']):not([data-part-of-speech='Dopełnienie']):not([data-part-of-speech='Przydawka']):not([data-part-of-speech='Okolicznik'])",
+      "targetElement": ".drag-card:not([data-part-of-speech='Podmiot']):not([data-part-of-speech='Orzeczenie']):not([data-part-of-speech='Dopełnienie']):not([data-part-of-speech='Przydawka']):not([data-part-of-speech='Okolicznik']):not([data-part-of-speech='Okolicznik Miejsca']):not([data-part-of-speech='Okolicznik Czasu']):not([data-part-of-speech='Okolicznik Sposobu']):not([data-part-of-speech='Okolicznik Celu']):not([data-part-of-speech='Okolicznik Przyczyny']):not([data-part-of-speech='Okolicznik Warunku']):not([data-part-of-speech='Okolicznik Przyzwolenia'])",
       "text": "To etykieta części zdania. Przeciągnij ją na słowo, które według Ciebie jest tą częścią zdania.",
       "position": "bottom",
       "dynamic": true
