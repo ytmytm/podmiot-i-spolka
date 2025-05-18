@@ -1,0 +1,219 @@
+/* Import theme variables - In a real build setup, this might be done via JS or a CSS preprocessor */
+/* For now, we'll use CSS variables and manually mirror some theme values */
+
+:root {
+    /* From ui_theme.json - manual copy for this example */
+    --font-main: 'Poppins', sans-serif;
+    --font-base-size: 18px;
+
+    --color-primary: #8EC5FC;
+    --color-secondary: #E0C3FC;
+    --color-accent: #FFF9C4;
+    --color-text-light: #FFFFFF;
+    --color-text-dark: #333333;
+    --color-feedback-correct: #A5D6A7;
+    --color-feedback-incorrect: #EF9A9A;
+    --color-background-main: #F0F4F8; /* Light grayish blue */
+    --color-word-slot-bg: #FFFFFF;
+    --color-drag-card-bg: #E3F2FD; /* Light blue */
+
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+    --border-radius-default: 8px;
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: var(--font-base-size);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background-main);
+    color: var(--color-text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: var(--spacing-large);
+}
+
+.app-container {
+    width: 90%;
+    max-width: 900px;
+    background-color: var(--color-text-light);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius-default);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    padding-bottom: var(--spacing-medium);
+    border-bottom: 1px solid #eee;
+    margin-bottom: var(--spacing-medium);
+}
+
+header h1 {
+    color: var(--color-primary);
+    margin: 0;
+}
+
+#game-area {
+    display: flex;
+    flex-direction: column; /* Stack sentence and parts tray */
+    gap: var(--spacing-large);
+    margin-bottom: var(--spacing-medium);
+}
+
+#sentence-display-container .instruction {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: var(--spacing-small);
+}
+
+.sentence-board {
+    padding: var(--spacing-medium);
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--border-radius-default);
+    background-color: var(--color-word-slot-bg);
+    min-height: 50px; /* Ensure it has some height even if empty initially */
+}
+
+.word-slots-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-small);
+}
+
+.word-slot {
+    padding: var(--spacing-small) var(--spacing-medium);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius-default);
+    background-color: #f9f9f9;
+    cursor: default; /* Default, as it's a drop target */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    user-select: none;
+    min-width: 50px; /* Ensure slots have some width */
+    text-align: center;
+}
+
+.word-slot.drag-over {
+    background-color: var(--color-accent);
+    border-style: dashed;
+    transform: scale(1.05);
+}
+
+/* Styles for word slots AFTER a drop (correct/incorrect) */
+.word-slot.correct-drop {
+    background-color: var(--color-feedback-correct);
+    border-color: green;
+    color: var(--color-text-dark);
+}
+
+.word-slot.incorrect-drop {
+    background-color: var(--color-feedback-incorrect);
+    border-color: darkred;
+    color: var(--color-text-dark);
+}
+
+
+#parts-tray-container {
+    padding: var(--spacing-medium);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-default);
+    background-color: #f7f9fc;
+}
+
+#parts-tray-container h2 {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: var(--spacing-small);
+    color: var(--color-primary);
+}
+
+.drag-card {
+    padding: var(--spacing-small) var(--spacing-medium);
+    margin: var(--spacing-small);
+    background-color: var(--color-drag-card-bg);
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--border-radius-default);
+    cursor: grab;
+    display: inline-block; /* Allow them to flow */
+    transition: opacity 0.2s ease, box-shadow 0.2s ease;
+    user-select: none;
+}
+
+.drag-card.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#controls-area {
+    text-align: center;
+    padding: var(--spacing-medium) 0;
+    margin-bottom: var(--spacing-medium);
+}
+
+button {
+    padding: var(--spacing-small) var(--spacing-medium);
+    font-family: var(--font-main);
+    font-size: 0.95em;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border: none;
+    border-radius: var(--border-radius-default);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin: 0 var(--spacing-small);
+}
+
+button:hover {
+    background-color: #79b2e8; /* Darker shade of primary */
+}
+
+button#next-sentence-button {
+    background-color: var(--color-secondary);
+}
+button#next-sentence-button:hover {
+    background-color: #cda0e8; /* Darker shade of secondary */
+}
+
+#results-area {
+    padding: var(--spacing-medium);
+    border: 1px solid #eee;
+    border-radius: var(--border-radius-default);
+    background-color: #f9f9f9;
+}
+
+#results-area h2 {
+    margin-top: 0;
+    color: var(--color-primary);
+}
+
+#feedback-container p {
+    padding: var(--spacing-small);
+    border-radius: 4px;
+    margin-bottom: var(--spacing-small);
+}
+
+#feedback-container .correct {
+    background-color: var(--color-feedback-correct);
+    border-left: 5px solid green;
+}
+
+#feedback-container .incorrect {
+    background-color: var(--color-feedback-incorrect);
+    border-left: 5px solid darkred;
+}
+
+footer {
+    text-align: center;
+    padding-top: var(--spacing-medium);
+    border-top: 1px solid #eee;
+    margin-top: var(--spacing-large);
+    font-size: 0.85em;
+    color: #777;
+} 

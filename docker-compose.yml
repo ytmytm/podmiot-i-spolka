@@ -2,14 +2,12 @@ version: '3.8'
 
 services:
   frontend:
-    image: nginx:1.25-alpine
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
     container_name: czesci-zdania-frontend
     ports:
-      - "8080:80" # Assuming frontend runs on port 80 in the container
-    volumes:
-      - ./frontend/public:/usr/share/nginx/html # For static assets if serving directly
-      # If using a build step for frontend (e.g., Vite), you'd mount the dist folder:
-      # - ./frontend/dist:/usr/share/nginx/html 
+      - "8080:80" # Host:Container (frontend runs on port 80 in the Nginx container)
     # depends_on:
     #   - backend # Uncomment if frontend needs backend to be up
 

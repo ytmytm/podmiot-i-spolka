@@ -1,0 +1,26 @@
+{
+  "colors": {
+    "primary": "#8EC5FC",
+    "secondary": "#E0C3FC",
+    "accent": "#FFF9C4",
+    "textLight": "#FFFFFF",
+    "textDark": "#333333",
+    "feedbackCorrect": "#A5D6A7",
+    "feedbackIncorrect": "#EF9A9A",
+    "backgroundMain": "#F0F4F8",
+    "wordSlotBackground": "#FFFFFF",
+    "dragCardBackground": "#E3F2FD"
+  },
+  "fonts": {
+    "main": "Poppins, sans-serif",
+    "baseSize": "18px"
+  },
+  "spacing": {
+    "small": "8px",
+    "medium": "16px",
+    "large": "24px"
+  },
+  "borderRadius": {
+    "default": "8px"
+  }
+} 

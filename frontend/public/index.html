@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gra Edukacyjna - Części Zdania</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Analiza Zdania</h1>
+        </header>
+
+        <main>
+            <section id="game-area">
+                <div id="sentence-display-container">
+                    <p class="instruction">Przeciągnij etykietę na odpowiednie słowo lub grupę słów.</p>
+                    <!-- SentenceBoard will be rendered here by JavaScript -->
+                </div>
+
+                <div id="parts-tray-container">
+                    <h2>Części Zdania:</h2>
+                    <!-- DragCards will be rendered here by JavaScript -->
+                </div>
+            </section>
+
+            <section id="controls-area">
+                <button id="check-answers-button">Sprawdź Odpowiedzi</button>
+                <button id="next-sentence-button" style="display: none;">Następne Zdanie</button>
+            </section>
+
+            <section id="results-area" style="display: none;">
+                <h2>Wynik:</h2>
+                <p id="score-display"></p>
+                <div id="feedback-container">
+                    <!-- Detailed feedback will be shown here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Gra Edukacyjna</p>
+        </footer>
+    </div>
+
+    <script type="module" src="../src/main.js"></script>
+</body>
+</html> 

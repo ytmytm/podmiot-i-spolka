@@ -1,0 +1,220 @@
+[
+  {
+    "id": 1,
+    "sentence": "Mama czyta.",
+    "level": 1,
+    "tokens": [
+      {"word": "Mama", "part": "Podmiot"},
+      {"word": "czyta", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 2,
+    "sentence": "Pies biega.",
+    "level": 1,
+    "tokens": [
+      {"word": "Pies", "part": "Podmiot"},
+      {"word": "biega", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 3,
+    "sentence": "Słońce zachodzi.",
+    "level": 1,
+    "tokens": [
+      {"word": "Słońce", "part": "Podmiot"},
+      {"word": "zachodzi", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 4,
+    "sentence": "Dzieci się bawią.",
+    "level": 1,
+    "tokens": [
+      {"word": "Dzieci", "part": "Podmiot"},
+      {"word": "się bawią", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 5,
+    "sentence": "Nauczyciel mówi.",
+    "level": 1,
+    "tokens": [
+      {"word": "Nauczyciel", "part": "Podmiot"},
+      {"word": "mówi", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 6,
+    "sentence": "Wesoły chłopiec skacze.",
+    "level": 2,
+    "tokens": [
+      {"word": "Wesoły", "part": "Przydawka"},
+      {"word": "chłopiec", "part": "Podmiot"},
+      {"word": "skacze", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 7,
+    "sentence": "Stary dąb rośnie.",
+    "level": 2,
+    "tokens": [
+      {"word": "Stary", "part": "Przydawka"},
+      {"word": "dąb", "part": "Podmiot"},
+      {"word": "rośnie", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 8,
+    "sentence": "Czerwony samochód jedzie.",
+    "level": 2,
+    "tokens": [
+      {"word": "Czerwony", "part": "Przydawka"},
+      {"word": "samochód", "part": "Podmiot"},
+      {"word": "jedzie", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 9,
+    "sentence": "Nowa książka leży.",
+    "level": 2,
+    "tokens": [
+      {"word": "Nowa", "part": "Przydawka"},
+      {"word": "książka", "part": "Podmiot"},
+      {"word": "leży", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 10,
+    "sentence": "Duże chmury płyną.",
+    "level": 2,
+    "tokens": [
+      {"word": "Duże", "part": "Przydawka"},
+      {"word": "chmury", "part": "Podmiot"},
+      {"word": "płyną", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 11,
+    "sentence": "Kot śpi w koszyku.",
+    "level": 3,
+    "tokens": [
+      {"word": "Kot", "part": "Podmiot"},
+      {"word": "śpi", "part": "Orzeczenie"},
+      {"word": "w koszyku", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 12,
+    "sentence": "Zielona trawa rośnie na łące.",
+    "level": 3,
+    "tokens": [
+      {"word": "Zielona", "part": "Przydawka"},
+      {"word": "trawa", "part": "Podmiot"},
+      {"word": "rośnie", "part": "Orzeczenie"},
+      {"word": "na łące", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 13,
+    "sentence": "Dzieci bawią się tam.",
+    "level": 3,
+    "tokens": [
+      {"word": "Dzieci", "part": "Podmiot"},
+      {"word": "się bawią", "part": "Orzeczenie"},
+      {"word": "tam", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 14,
+    "sentence": "Oni jutro pójdą.",
+    "level": 3,
+    "tokens": [
+      {"word": "Oni", "part": "Podmiot"},
+      {"word": "jutro", "part": "Okolicznik Czasu"},
+      {"word": "pójdą", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 15,
+    "sentence": "Ciekawy film zaczyna się wieczorem.",
+    "level": 3,
+    "tokens": [
+      {"word": "Ciekawy", "part": "Przydawka"},
+      {"word": "film", "part": "Podmiot"},
+      {"word": "zaczyna się", "part": "Orzeczenie"},
+      {"word": "wieczorem", "part": "Okolicznik Czasu"}
+    ]
+  },
+  {
+    "id": 16,
+    "sentence": "Słońce świeci codziennie.",
+    "level": 3,
+    "tokens": [
+      {"word": "Słońce", "part": "Podmiot"},
+      {"word": "świeci", "part": "Orzeczenie"},
+      {"word": "codziennie", "part": "Okolicznik Czasu"}
+    ]
+  },
+  {
+    "id": 17,
+    "sentence": "Chłopiec biegnie szybko.",
+    "level": 3,
+    "tokens": [
+      {"word": "Chłopiec", "part": "Podmiot"},
+      {"word": "biegnie", "part": "Orzeczenie"},
+      {"word": "szybko", "part": "Okolicznik Sposobu"}
+    ]
+  },
+  {
+    "id": 18,
+    "sentence": "Mały ptaszek pięknie śpiewa.",
+    "level": 3,
+    "tokens": [
+      {"word": "Mały", "part": "Przydawka"},
+      {"word": "ptaszek", "part": "Podmiot"},
+      {"word": "pięknie", "part": "Okolicznik Sposobu"},
+      {"word": "śpiewa", "part": "Orzeczenie"}
+    ]
+  },
+  {
+    "id": 19,
+    "sentence": "Uczeń czyta dla przyjemności.",
+    "level": 3,
+    "tokens": [
+      {"word": "Uczeń", "part": "Podmiot"},
+      {"word": "czyta", "part": "Orzeczenie"},
+      {"word": "dla przyjemności", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 20,
+    "sentence": "Mama poszła po zakupy.",
+    "level": 3,
+    "tokens": [
+      {"word": "Mama", "part": "Podmiot"},
+      {"word": "poszła", "part": "Orzeczenie"},
+      {"word": "po zakupy", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 21,
+    "sentence": "Drzewo upadło z powodu wiatru.",
+    "level": 3,
+    "tokens": [
+      {"word": "Drzewo", "part": "Podmiot"},
+      {"word": "upadło", "part": "Orzeczenie"},
+      {"word": "z powodu wiatru", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 22,
+    "sentence": "Janek płakał z radości.",
+    "level": 3,
+    "tokens": [
+      {"word": "Janek", "part": "Podmiot"},
+      {"word": "płakał", "part": "Orzeczenie"},
+      {"word": "z radości", "part": "Okolicznik Przyczyny"}
+    ]
+  }
+] 
