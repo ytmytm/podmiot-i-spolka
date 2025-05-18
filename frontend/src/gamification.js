@@ -7,6 +7,28 @@ const XP_KEY = 'czesciZdaniaXP';
 const LEVEL_KEY = 'czesciZdaniaLevel';
 const XP_PER_LEVEL = 100;
 
+// --- Badge Definitions and Storage ---
+export const BADGES = {
+    SUBJECT_MASTER: {
+        id: 'SUBJECT_MASTER',
+        name: 'Mistrz Podmiotu',
+        description: 'Poprawnie oznacz 10 podmiotów z rzędu.',
+        icon: 'fas fa-crown', // Example Font Awesome icon class
+        criteria: { type: 'consecutiveCorrect', partOfSpeech: 'podmiot', count: 10 }
+    },
+    // Example of another badge type
+    // PERFECT_STREAK_3: {
+    //     id: 'PERFECT_STREAK_3',
+    //     name: 'Perfekcyjna Seria (3)',
+    //     description: 'Rozwiąż 3 zdania z rzędu bezbłędnie.',
+    //     icon: 'fas fa-star',
+    //     criteria: { type: 'perfectSentencesStreak', count: 3 }
+    // }
+};
+
+const EARNED_BADGES_KEY = 'czesciZdaniaEarnedBadges';
+const BADGE_PROGRESS_KEY_PREFIX = 'czesciZdaniaBadgeProgress_';
+
 /**
  * Retrieves current XP from localStorage.
  * @returns {number} Current XP.
@@ -109,12 +131,73 @@ export function getLevelProgressPercentage() {
 }
 
 /**
+ * Retrieves earned badges from localStorage.
+ * @returns {Object} An object where keys are badge IDs and values are earning timestamps.
+ */
+export function getEarnedBadges() {
+    const badges = localStorage.getItem(EARNED_BADGES_KEY);
+    return badges ? JSON.parse(badges) : {};
+}
+
+/**
+ * Saves earned badges to localStorage.
+ * @param {Object} earnedBadges - The earned badges object to save.
+ */
+function saveEarnedBadges(earnedBadges) {
+    localStorage.setItem(EARNED_BADGES_KEY, JSON.stringify(earnedBadges));
+}
+
+/**
+ * Awards a badge if not already earned.
+ * @param {string} badgeId - The ID of the badge to award.
+ * @returns {boolean} True if the badge was newly awarded, false otherwise.
+ */
+function awardBadge(badgeId) {
+    const earnedBadges = getEarnedBadges();
+    if (!earnedBadges[badgeId]) {
+        earnedBadges[badgeId] = new Date().toISOString();
+        saveEarnedBadges(earnedBadges);
+        console.log(`Badge awarded: ${BADGES[badgeId]?.name || badgeId}!`);
+        // Here you could trigger a UI notification
+        return true;
+    }
+    return false;
+}
+
+/**
+ * Gets progress for a specific badge criterion.
+ * @param {string} criterionKey - Unique key for the progress (e.g., 'consecutiveSubjectCorrect')
+ * @returns {any} The stored progress value, or a default (e.g., 0).
+ */
+function getBadgeProgress(criterionKey) {
+    const item = localStorage.getItem(`${BADGE_PROGRESS_KEY_PREFIX}${criterionKey}`);
+    return item ? JSON.parse(item) : 0; // Default to 0 for counts
+}
+
+/**
+ * Saves progress for a specific badge criterion.
+ * @param {string} criterionKey - Unique key for the progress.
+ * @param {any} value - The value to save.
+ */
+function saveBadgeProgress(criterionKey, value) {
+    localStorage.setItem(`${BADGE_PROGRESS_KEY_PREFIX}${criterionKey}`, JSON.stringify(value));
+}
+
+/**
  * Resets player's XP and Level to initial state.
  */
 export function resetGamification() {
     saveXP(0);
     saveLevel(1);
-    console.log("Gamification data (XP and Level) has been reset.");
+    // Reset badges and progress
+    saveEarnedBadges({});
+    // Clear all badge progress - be more specific if some progress should persist differently
+    Object.keys(localStorage).forEach(key => {
+        if (key.startsWith(BADGE_PROGRESS_KEY_PREFIX)) {
+            localStorage.removeItem(key);
+        }
+    });
+    console.log("Gamification data (XP, Level, Badges, Badge Progress) has been reset.");
 }
 
 // --- Basic Test Area ---
@@ -167,3 +250,76 @@ export function testGamification() {
 // console.log(getXP(), getLevel());
 // addXP(10);
 // console.log(getXP(), getLevel()); 
+
+// --- Badge Checking Logic ---
+
+/**
+ * Checks and awards badges based on game events and evaluation results.
+ * This function will be called after sentence evaluation.
+ * @param {Object} evaluationDetails - Detailed results from sentence evaluation.
+ *                                    Example: {
+ *                                       isPerfectSentence: boolean,
+ *                                       partsOfSpeechFeedback: [ { word: string, attempted: string, actual: string, isCorrect: boolean, partOfSpeech: string } ],
+ *                                       timeTakenSeconds: number (optional)
+ *                                    }
+ */
+export function checkAndAwardBadges(evaluationDetails) {
+    if (!evaluationDetails) return;
+
+    const earnedBadges = getEarnedBadges();
+
+    // --- Check for SUBJECT_MASTER badge ---
+    const subjectMasterBadge = BADGES.SUBJECT_MASTER;
+    if (subjectMasterBadge && !earnedBadges[subjectMasterBadge.id]) {
+        let consecutiveCorrectSubjects = getBadgeProgress('consecutive_podmiot_correct');
+        
+        let subjectAttemptedInThisRound = false;
+        let subjectCorrectInThisRound = true; // Assume correct unless proven otherwise or not attempted
+
+        if (evaluationDetails.partsOfSpeechFeedback) {
+            evaluationDetails.partsOfSpeechFeedback.forEach(feedback => {
+                if (feedback.partOfSpeech === subjectMasterBadge.criteria.partOfSpeech) { // 'podmiot'
+                    subjectAttemptedInThisRound = true;
+                    if (feedback.isCorrect) {
+                        // This specific 'podmiot' was correct
+                    } else {
+                        subjectCorrectInThisRound = false; // Any incorrect 'podmiot' in the sentence breaks the streak for this round
+                    }
+                }
+            });
+        }
+        
+        if (subjectAttemptedInThisRound && subjectCorrectInThisRound) {
+            consecutiveCorrectSubjects++;
+        } else if (subjectAttemptedInThisRound && !subjectCorrectInThisRound) {
+            // If a subject was attempted and was incorrect, reset streak
+            consecutiveCorrectSubjects = 0;
+        }
+        // If no subject was attempted in this round, the streak neither increments nor resets. It holds.
+        // Or, one might decide that not attempting a subject when present also breaks a "consecutive correct" streak.
+        // For now, we only increment on correct, reset on incorrect.
+
+        saveBadgeProgress('consecutive_podmiot_correct', consecutiveCorrectSubjects);
+
+        if (consecutiveCorrectSubjects >= subjectMasterBadge.criteria.count) {
+            awardBadge(subjectMasterBadge.id);
+        }
+    }
+
+    // --- Check for PERFECT_STREAK_3 badge (example) ---
+    // const perfectStreakBadge = BADGES.PERFECT_STREAK_3;
+    // if (perfectStreakBadge && !earnedBadges[perfectStreakBadge.id] && evaluationDetails.isPerfectSentence !== undefined) {
+    //     let perfectSentenceStreak = getBadgeProgress('perfect_sentence_streak');
+    //     if (evaluationDetails.isPerfectSentence) {
+    //         perfectSentenceStreak++;
+    //     } else {
+    //         perfectSentenceStreak = 0; // Reset streak on any imperfect sentence
+    //     }
+    //     saveBadgeProgress('perfect_sentence_streak', perfectSentenceStreak);
+    //     if (perfectSentenceStreak >= perfectStreakBadge.criteria.count) {
+    //         awardBadge(perfectStreakBadge.id);
+    //     }
+    // }
+    
+    // Add checks for other badges here
+} 

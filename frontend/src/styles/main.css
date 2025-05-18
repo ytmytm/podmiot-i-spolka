@@ -55,7 +55,7 @@ header {
 }
 
 header h1 {
-    color: var(--color-primary);
+    color: var(--color-text-dark);
     margin: 0;
     margin-bottom: var(--spacing-small); /* Add some space below title */
 }
@@ -207,7 +207,7 @@ button {
     font-family: var(--font-main);
     font-size: 0.95em;
     background-color: var(--color-primary);
-    color: var(--color-text-light);
+    color: var(--color-text-dark);
     border: none;
     border-radius: var(--border-radius-default);
     cursor: pointer;

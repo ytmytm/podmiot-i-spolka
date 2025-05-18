@@ -3,7 +3,7 @@ import { DragCard } from './components/DragCard.js';
 import { initializeDragAndDrop } from './drag.js';
 import { scorer } from './scorer.js';
 import { ResultView } from './components/ResultView.js';
-import { getXP, getLevel, addXP, getXPForNextLevel, getLevelProgressPercentage } from './gamification.js';
+import { getXP, getLevel, addXP, getXPForNextLevel, getLevelProgressPercentage, checkAndAwardBadges } from './gamification.js';
 
 // --- DOM Elements ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -192,6 +192,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (gamificationUpdate.leveledUp) {
             showLevelUpNotification(gamificationUpdate.level);
         }
+
+        // --- Badge Logic ---
+        const evaluationDetails = {
+            isPerfectSentence: scoreResult.results.every(r => r.isCorrect),
+            partsOfSpeechFeedback: scoreResult.results.map(r => ({
+                word: r.word,
+                attempted: r.userAnswer,
+                actual: r.correctAnswer, // This is the actual part of speech of the word
+                isCorrect: r.isCorrect,
+                partOfSpeech: r.correctAnswer // For "Mistrz Podmiotu", criteria looks for actual POS
+            }))
+            // timeTakenSeconds: undefined // Could be added if a timer is implemented
+        };
+        checkAndAwardBadges(evaluationDetails);
+        // --- End Badge Logic ---
 
         scoreDisplay.textContent = `Wynik za to zdanie: ${scoreResult.totalScore} pkt. Łączny wynik: ${totalGameScore}`;
         feedbackContainer.innerHTML = ''; // Clear previous feedback
