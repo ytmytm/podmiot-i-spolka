@@ -1,8 +1,10 @@
 # DESIGN
 
+*(Podsumowanie na koniec dnia: Definicja motywu UI (P-02 z `PLAN.md`) została sfinalizowana i jest odzwierciedlona w sekcji "UI/UX". Konfiguracja Dockerfile dla backendu (P-10 z `PLAN.md`) jest zgodna z opisaną architekturą kontenerów. Kolejne prace projektowe będą wspierać implementację zadań o wysokim priorytecie z `PLAN.md`.)*
+
 ## Cel techniczny
 
-Zaplanowanie i opis architektury gry edukacyjnej „Części zdania” przeznaczonej dla uczniów 5 klasy SP.
+Zaplanowanie i opis architektury gry edukacyjnej "Części zdania" przeznaczonej dla uczniów 5 klasy SP.
 
 ## Stack technologiczny
 
@@ -27,13 +29,13 @@ Zaplanowanie i opis architektury gry edukacyjnej „Części zdania” przeznacz
 ### Gamifikacja
 
 * **XP:** +10 za poprawne, +3 za częściowo poprawne, −2 za błędne.
-* **Poziomy:** Każde 100 XP podnosi poziom.
-* **Odznaki:** „Mistrz Podmiotu” (10 poprawnych podmiotów z rzędu) itp.
+* **Poziomy:** Każde 100 XP podnosi poziom.
+* **Odznaki:** "Mistrz Podmiotu" (10 poprawnych podmiotów z rzędu) itp.
 
 ## UI/UX
 
 * Pastelowa paleta (#8EC5FC, #E0C3FC, #FFF9C4).
-* Font: Poppins, wielkość 18 px+.
+* Font: Poppins, wielkość 18 px+.
 * Animacje: podświetlenie poprawnych/niepoprawnych pól, przyjemne przejścia.
 * Obsługa myszy, wsparcie dotyku (mobile).
 

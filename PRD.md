@@ -1,4 +1,6 @@
-# PRD – Gra „Części Zdania”
+# PRD – Gra „Części Zdania”
+
+*(Podsumowanie na koniec dnia: Ukończono wstępne prace nad motywem UI (zgodnie z P-02 z `PLAN.md`) oraz konfiguracją Docker dla backendu (P-10 z `PLAN.md`). Te elementy wspierają cele MVP dotyczące interfejsu użytkownika oraz wymagań niefunkcjonalnych. Główne priorytety na kolejny dzień to rozwój rdzenia rozgrywki i pozostałych zadań o wysokim priorytecie z `PLAN.md`.)*
 
 ## 1. Wstęp
 
@@ -12,21 +14,21 @@ Celem projektu jest zwiększenie motywacji i efektywności nauki rozbioru gramat
 
 ## 3. Wizja produktu
 
-Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele zyskują panel raportów. Gra ma prosty interfejs „przeciągnij‑i‑upuść” oraz system punktów i poziomów, który zachęca do regularnych powtórek.
+Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele zyskują panel raportów. Gra ma prosty interfejs „przeciągnij‑i‑upuść” oraz system punktów i poziomów, który zachęca do regularnych powtórek.
 
 ## 4. Cele SMART
 
-1. **S** (Specific) – uruchomić wersję MVP gry webowej zawierającą co najmniej 50 zdań do rozbioru oraz mechanizm punktacji do **30 września 2025 r.**
-2. **M** (Measurable) – osiągnąć średnio ≥ 5 min czasu sesji na ucznia w pierwszym miesiącu po premierze.
-3. **A** (Achievable) – zdobyć min. 2 szkoły pilotażowe i 60 uczniów aktywnych tygodniowo w ciągu pierwszych 3 miesięcy.
-4. **R** (Relevant) – poprawić średni wynik testu z części zdania u uczniów testowych o 15 pp względem grupy kontrolnej.
-5. **T** (Time‑bound) – osiągnąć powyższe metryki do **31 grudnia 2025 r.**
+1. **S** (Specific) – uruchomić wersję MVP gry webowej zawierającą co najmniej 50 zdań do rozbioru oraz mechanizm punktacji do **30 września 2025 r.**
+2. **M** (Measurable) – osiągnąć średnio ≥ 5 min czasu sesji na ucznia w pierwszym miesiącu po premierze.
+3. **A** (Achievable) – zdobyć min. 2 szkoly pilotażowe i 60 uczniów aktywnych tygodniowo w ciągu pierwszych 3 miesięcy.
+4. **R** (Relevant) – poprawić średni wynik testu z części zdania u uczniów testowych o 15 pp względem grupy kontrolnej.
+5. **T** (Time‑bound) – osiągnąć powyższe metryki do **31 grudnia 2025 r.**
 
 ## 5. Grupa docelowa
 
 | Segment                      | Charakterystyka                                   | Potrzeby                                           |
 | ---------------------------- | ------------------------------------------------- | -------------------------------------------------- |
-| Uczniowie klas 5 (10–11 lat) | Lubią gry, krótka koncentracja uwagi, kolorowy UI | Zabawa, szybka nagroda, brak nadmiaru tekstu       |
+| Uczniowie klas 5 (10–11 lat) | Lubią gry, krótka koncentracja uwagi, kolorowy UI | Zabawa, szybka nagroda, brak nadmiaru tekstu       |
 | Nauczyciele języka polskiego | Zarządzają klasą, ograniczony czas lekcji         | Łatwe monitorowanie postępów, materiały powtórkowe |
 | Rodzice                      | Wspierają naukę w domu                            | Bezpieczna, wartościowa gra, brak reklam           |
 
@@ -42,8 +44,8 @@ Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele z
 ### 6.2 Gamifikacja
 
 * Poziomy doświadczenia (XP) i awatar rosnący wraz z postępami.
-* Odznaki (badge) za serie poprawnych zdań, czas reakcji < 10 s itp.
-* Tabela wyników klasy (opcjonalnie w „trybie nauczycielskim”).
+* Odznaki (badge) za serie poprawnych zdań, czas reakcji < 10 s itp.
+* Tabela wyników klasy (opcjonalnie w "trybie nauczycielskim").
 
 ### 6.3 Biblioteka zdań
 
@@ -58,12 +60,12 @@ Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele z
 
 ### 6.5 Dostępność multiplatformowa
 
-* Responsywny design (≥ 1024 px desktop, ≥ 720 px tablet).
+* Responsywny design (≥ 1024 px desktop, ≥ 720 px tablet).
 * Obsługa najnowszych wersji Chrome, Edge, Firefox oraz Safari (iPad OS).
 
 ## 7. Zakres MVP
 
-| Moduł                 | Wchodzą w MVP | Po MVP                          |
+| Moduł                 | Wchodzą w MVP | Po MVP                          |
 | --------------------- | ------------- | ------------------------------- |
 | Rozgrywka DnD         | ✔             | –                               |
 | 100 zdań offline      | ✔             | dynamiczne generowanie          |
@@ -75,16 +77,16 @@ Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele z
 
 ## 8. Wymagania niefunkcjonalne
 
-* **Dostępność**: kontrast zgodny z WCAG 2.1 AA.
-* **Wydajność**: ładowanie pierwszego ekranu ≤ 2 s przy 3G Fast.
+* **Dostępność**: kontrast zgodny z WCAG 2.1 AA.
+* **Wydajność**: ładowanie pierwszego ekranu ≤ 2 s przy 3G Fast.
 * **Bezpieczeństwo**: brak danych wrażliwych, komunikacja HTTPS.
 * **Skalowalność**: kontener Docker z plikiem `Dockerfile`.
-* **Środowisko**: Node >= 20, ES2022.
+* **Środowisko**: Node >= 20, ES2022.
 
 ## 9. Kryteria akceptacji
 
-1. Uczeń może przeciągnąć etykietę na słowo; po zwolnieniu otrzymuje feedback (zielona ramka / czerwona x) ≤ 0,3 s.
-2. Po ukończeniu zdania pojawia się podsumowanie punktów i przycisk „Następne zdanie”.
+1. Uczeń może przeciągnąć etykietę na słowo; po zwolnieniu otrzymuje feedback (zielona ramka / czerwona x) ≤ 0,3 s.
+2. Po ukończeniu zdania pojawia się podsumowanie punktów i przycisk "Następne zdanie".
 3. Gra działa bezbłędnie offline po pierwszym załadowaniu (PWA service worker).
 4. W trybie nauczycielskim eksport CSV wyników działa poprawnie.
 
@@ -92,10 +94,10 @@ Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele z
 
 | Metryka                         | Cel                       |
 | ------------------------------- | ------------------------- |
-| Średni czas sesji               | ≥ 5 min                   |
-| Dzienni aktywni uczniowie (DAU) | ≥ 40 na klasę testową     |
-| Średnia dokładność odpowiedzi   | ≥ 80 % po 2 tyg. używania |
-| Retencja 7‑dniowa               | ≥ 60 %                    |
+| Średni czas sesji               | ≥ 5 min                   |
+| Dzienni aktywni uczniowie (DAU) | ≥ 40 na klasę testową     |
+| Średnia dokładność odpowiedzi   | ≥ 80 % po 2 tyg. używania |
+| Retencja 7‑dniowa               | ≥ 60 %                    |
 
 ## 11. Harmonogram (wysoki poziom)
 
@@ -103,15 +105,15 @@ Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele z
 | ---------- | --------------------------- |
 | 2025‑05‑31 | Zamrożenie wymagań (PRD)    |
 | 2025‑07‑15 | Prototyp UI (figma)         |
-| 2025‑08‑31 | Beta (MVP, testy szkoła #1) |
+| 2025‑08‑31 | Beta (MVP, testy szkoła #1) |
 | 2025‑09‑30 | Launch MVP publiczny        |
 | 2025‑12‑31 | Panel nauczyciela + ranking |
 
 ## 12. Założenia i ryzyka
 
 * **Założenie:** Dostęp do OpenAI API pozostanie w wersji edukacyjnej z obniżoną ceną.
-* **Ryzyko:** Uczniowie mogą omijać pytania losowo klikając – mitiger: mechanizm obniżania punktów i blokada 3 s po błędzie.
-* **Ryzyko:** Zbyt mała liczba zdań -> plan B: manualne dopisanie przez nauczycieli.
+* **Ryzyko:** Uczniowie mogą omijać pytania losowo klikając – mitiger: mechanizm obniżania punktów i blokada 3 s po błędzie.
+* **Ryzyko:** Zbyt mała liczba zdań -> plan B: manualne dopisanie przez nauczycieli.
 
 ## 13. Załączniki
 

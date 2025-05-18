@@ -1,5 +1,19 @@
 # PLAN – Zadania dla agentów AI
 
+## Postęp prac i kolejne kroki
+
+**Stan na koniec dnia:**
+* **P-02 (UI):** Schemat kolorów i fontów – **ZROBIONE**.
+* **P-10 (DevOps):** Dockerfile dla backendu – **ZROBIONE**.
+
+**Następne priorytety:** Realizacja zadań oznaczonych jako **wysoki** w poniższej tabeli, ze szczególnym uwzględnieniem:
+* P-01: Generowanie zdań (`sentences_pl.json`)
+* P-03: Implementacja `SentenceBoard.js`
+* P-04: Implementacja logiki drag & drop
+* P-05: Stworzenie funkcji `scorer()`
+* P-14: Propozycja onboardingu i tooltipów
+* P-16: Implementacja Service Worker dla trybu offline
+
 Dokument rozbija projekt na małe jednostki pracy możliwe do wykonania równolegle przez mniejsze modele LLM.
 
 | Nr   | Moduł            | Zadanie                                                      | Wejście                | Oczekiwane wyjście         | Priorytet |
