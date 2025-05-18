@@ -444,4 +444,20 @@ footer {
     position: relative; /* Needed if you want to add ::before/::after pseudo-elements for more complex highlights */
     z-index: 2001; /* Ensure highlighted element is above overlay if it's partially covered */
 }
-/* --- End Onboarding Styles --- */ 
+/* --- End Onboarding Styles --- */
+
+/* --- Tooltip Styles --- */
+#dynamic-tooltip {
+    position: absolute; /* Positioned by JavaScript */
+    background-color: #333; /* Dark background */
+    color: #fff; /* Light text */
+    padding: 8px 12px;
+    border-radius: var(--border-radius-default);
+    font-size: 0.85em;
+    z-index: 3000; /* Very high z-index to be on top of everything */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    pointer-events: none; /* Tooltip itself should not be interactive */
+    white-space: pre-wrap; /* Allow text to wrap but preserve spaces */
+    max-width: 250px; /* Prevent excessively wide tooltips */
+}
+/* --- End Tooltip Styles --- */ 
