@@ -149,18 +149,18 @@ function saveEarnedBadges(earnedBadges) {
 /**
  * Awards a badge if not already earned.
  * @param {string} badgeId - The ID of the badge to award.
- * @returns {boolean} True if the badge was newly awarded, false otherwise.
+ * @returns {Object|null} The badge definition if newly awarded, null otherwise.
  */
 function awardBadge(badgeId) {
     const earnedBadges = getEarnedBadges();
     if (!earnedBadges[badgeId]) {
         earnedBadges[badgeId] = new Date().toISOString();
         saveEarnedBadges(earnedBadges);
-        console.log(`Badge awarded: ${BADGES[badgeId]?.name || badgeId}!`);
-        // Here you could trigger a UI notification
-        return true;
+        const badgeDef = BADGES[badgeId];
+        console.log(`Badge awarded: ${badgeDef?.name || badgeId}!`);
+        return badgeDef; // Return the badge definition if newly awarded
     }
-    return false;
+    return null; // Return null if already earned or not found
 }
 
 /**
@@ -261,11 +261,13 @@ export function testGamification() {
  *                                       partsOfSpeechFeedback: [ { word: string, attempted: string, actual: string, isCorrect: boolean, partOfSpeech: string } ],
  *                                       timeTakenSeconds: number (optional)
  *                                    }
+ * @returns {Array} An array of newly awarded badge definitions.
  */
 export function checkAndAwardBadges(evaluationDetails) {
     if (!evaluationDetails) return;
+    const newlyAwardedBadges = [];
 
-    const earnedBadges = getEarnedBadges();
+    const earnedBadges = getEarnedBadges(); // Keep this for checking if already earned inside loops
 
     // --- Check for SUBJECT_MASTER badge ---
     const subjectMasterBadge = BADGES.SUBJECT_MASTER;
@@ -301,7 +303,8 @@ export function checkAndAwardBadges(evaluationDetails) {
         saveBadgeProgress('consecutive_podmiot_correct', consecutiveCorrectSubjects);
 
         if (consecutiveCorrectSubjects >= subjectMasterBadge.criteria.count) {
-            awardBadge(subjectMasterBadge.id);
+            const awardedBadgeDef = awardBadge(subjectMasterBadge.id);
+            if (awardedBadgeDef) newlyAwardedBadges.push(awardedBadgeDef);
         }
     }
 
@@ -316,12 +319,11 @@ export function checkAndAwardBadges(evaluationDetails) {
         }
         saveBadgeProgress('perfect_sentence_streak', perfectSentenceStreak);
         if (perfectSentenceStreak >= perfectStreakBadge.criteria.count) {
-            if(awardBadge(perfectStreakBadge.id)) {
-                // If badge was newly awarded, maybe reset progress to allow re-earning or for tiered badges later?
-                // For now, it just awards once.
-            }
+            const awardedBadgeDef = awardBadge(perfectStreakBadge.id);
+            if (awardedBadgeDef) newlyAwardedBadges.push(awardedBadgeDef);
         }
     }
     
     // Add checks for other badges here
+    return newlyAwardedBadges;
 } 

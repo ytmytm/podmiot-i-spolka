@@ -23,11 +23,18 @@
                     <!-- Badges will be displayed here -->
                 </div>
             </div>
+            <div class="header-controls">
+                <button id="reset-game-button-header" class="button-secondary">Resetuj Grę</button>
+            </div>
         </header>
 
         <main>
             <div id="level-up-notification" class="level-up-notification" style="display: none;">
                 Gratulacje! Osiągnięto nowy poziom: <span id="new-level-achieved"></span>!
+            </div>
+            <div id="badge-earned-notification" class="badge-earned-notification" style="display: none;">
+                Odznaka Zdobyta: <i id="badge-notif-icon" class=""></i> <span id="badge-notif-name"></span>!
+                <p id="badge-notif-description" style="font-size: 0.8em; margin-top: 4px;"></p>
             </div>
             <section id="game-area">
                 <div id="sentence-display-container">

@@ -60,6 +60,23 @@ header h1 {
     margin-bottom: var(--spacing-small); /* Add some space below title */
 }
 
+.header-controls {
+    text-align: center; /* Or right, depending on desired placement */
+    margin-top: var(--spacing-small);
+    margin-bottom: var(--spacing-small);
+}
+
+#reset-game-button-header {
+    background-color: var(--color-accent); /* Using accent color for less emphasis than primary/secondary */
+    color: var(--color-text-dark);
+    padding: 6px 10px; /* Slightly smaller padding */
+    font-size: 0.85em;
+}
+
+#reset-game-button-header:hover {
+    background-color: #e6dbb0; /* Darker accent */
+}
+
 .player-stats {
     font-size: 0.85em;
     color: #555;
@@ -127,6 +144,26 @@ header h1 {
     z-index: 1000;
     text-align: center;
     font-weight: bold;
+}
+
+.badge-earned-notification {
+    position: fixed;
+    top: 70px; /* Position below level-up notification if both appear */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-secondary); /* Or another distinct color, e.g., gold */
+    color: var(--color-text-dark);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius-default);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 999; /* Ensure it's above most other content, but level-up could be 1000 */
+    text-align: center;
+    font-weight: bold;
+    min-width: 250px;
+}
+
+.badge-earned-notification i {
+    margin-right: 8px;
 }
 
 #game-area {

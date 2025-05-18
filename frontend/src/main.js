@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const levelUpNotification = document.getElementById('level-up-notification');
     const newLevelAchievedDisplay = document.getElementById('new-level-achieved');
     const playerBadgesContainer = document.getElementById('player-badges-container');
+    const resetGameButtonHeader = document.getElementById('reset-game-button-header');
+    const badgeEarnedNotification = document.getElementById('badge-earned-notification');
+    const badgeNotifIcon = document.getElementById('badge-notif-icon');
+    const badgeNotifName = document.getElementById('badge-notif-name');
+    const badgeNotifDescription = document.getElementById('badge-notif-description');
 
     // --- Game State ---
     let sentences = [];
@@ -101,6 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             levelUpNotification.style.display = 'none';
         }, 3000); // Hide after 3 seconds
+    }
+
+    function showBadgeNotification(badgeDef) {
+        if (!badgeEarnedNotification || !badgeDef) return;
+
+        if (badgeNotifIcon) {
+            badgeNotifIcon.className = badgeDef.icon; // Set icon class
+        }
+        if (badgeNotifName) {
+            badgeNotifName.textContent = badgeDef.name;
+        }
+        if (badgeNotifDescription) {
+            badgeNotifDescription.textContent = badgeDef.description;
+        }
+        
+        badgeEarnedNotification.style.display = 'block';
+        setTimeout(() => {
+            badgeEarnedNotification.style.display = 'none';
+        }, 4000); // Hide after 4 seconds (slightly longer for reading description)
     }
 
     // --- Load Data ---
@@ -240,8 +264,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }))
             // timeTakenSeconds: undefined // Could be added if a timer is implemented
         };
-        checkAndAwardBadges(evaluationDetails);
-        updatePlayerBadgesUI();
+        const newlyAwardedBadges = checkAndAwardBadges(evaluationDetails);
+        updatePlayerBadgesUI(); // Update the static display of badges
+
+        if (newlyAwardedBadges && newlyAwardedBadges.length > 0) {
+            newlyAwardedBadges.forEach((badgeDef, index) => {
+                // If multiple badges are awarded at once, show them sequentially with a delay
+                setTimeout(() => {
+                    showBadgeNotification(badgeDef);
+                }, index * 4500); // Stagger notifications
+            });
+        }
         // --- End Badge Logic ---
 
         scoreDisplay.textContent = `Wynik za to zdanie: ${scoreResult.totalScore} pkt. Łączny wynik: ${totalGameScore}`;
@@ -281,6 +314,17 @@ document.addEventListener('DOMContentLoaded', () => {
         loadSentence(currentSentenceIndex);
     });
 
+    // Shared function to reset and start a new game
+    const resetAndStartNewGame = () => {
+        resetGamification(); // Resets XP, Level, Badges, Badge Progress from gamification.js
+        // High scores in ResultView are separate, allow them to persist for now.
+        // If ResultView is visible, it might be good to remove it or hide it.
+        const existingResultView = document.querySelector('.result-view-container');
+        if (existingResultView) existingResultView.remove();
+        
+        startGame(); // Resets sentence index, total game score, and re-renders game area.
+    };
+
     function showGameResults() {
         gameInProgress = false;
         gameArea.style.display = 'none';
@@ -289,13 +333,9 @@ document.addEventListener('DOMContentLoaded', () => {
         mainHeader.textContent = 'Wyniki Gry';
         updatePlayerStatsUI(); // Ensure stats are up-to-date on results screen
         
-        const handleResetAndStartGame = () => {
-            resetGamification(); // Resets XP, Level, Badges, Badge Progress
-            // High scores in ResultView are separate, allow them to persist or add reset for them if needed.
-            startGame(); // Resets sentence index, total game score, and re-renders game.
-        };
-
-        const resultViewElement = ResultView(totalGameScore, startGame, handleResetAndStartGame);
+        // The existing onPlayAgainCallback for ResultView is just startGame.
+        // The onStartNewGameCallback for ResultView will now use the shared resetAndStartNewGame.
+        const resultViewElement = ResultView(totalGameScore, startGame, resetAndStartNewGame);
         const appContainer = document.querySelector('.app-container');
         const footer = appContainer.querySelector('footer');
         if (footer) {
@@ -307,4 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initial Load ---
     loadGameData();
+
+    // Event listener for the new header reset button
+    if(resetGameButtonHeader) {
+        resetGameButtonHeader.addEventListener('click', resetAndStartNewGame);
+    }
 }); 
