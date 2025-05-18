@@ -71,6 +71,31 @@ header h1 {
     margin: 0 var(--spacing-small);
 }
 
+.player-badges-container {
+    margin-top: var(--spacing-small);
+    display: flex;
+    gap: var(--spacing-small);
+    justify-content: center; /* Center badges if they don't fill space */
+    flex-wrap: wrap; /* Allow badges to wrap */
+    min-height: 20px; /* Ensure container has some height for alignment */
+}
+
+.player-badge {
+    display: inline-flex; /* To align icon and potential text */
+    align-items: center;
+    padding: 4px 6px;
+    background-color: var(--color-accent);
+    color: var(--color-text-dark); /* Ensure contrast on accent color */
+    border-radius: var(--border-radius-default);
+    font-size: 0.9em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.player-badge i {
+    font-size: 1.2em; /* Make icon slightly larger than text */
+    margin-right: 4px; /* Space if text is added next to icon later */
+}
+
 .xp-bar-container {
     width: 150px; /* Or a percentage */
     height: 15px;
@@ -236,6 +261,66 @@ button#next-sentence-button:hover {
 #results-area h2 {
     margin-top: 0;
     color: var(--color-primary);
+}
+
+/* Styles for ResultView component */
+.result-view-container {
+    padding: var(--spacing-medium);
+    margin-top: var(--spacing-large);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-default);
+    text-align: center;
+}
+
+.result-view-container h2 {
+    color: var(--color-primary);
+}
+
+.result-view-container .current-score-display {
+    font-size: 1.2em;
+    margin-bottom: var(--spacing-medium);
+}
+
+.result-view-container label {
+    display: block;
+    margin: var(--spacing-medium) 0 var(--spacing-small);
+}
+
+.result-view-container input[type="text"] {
+    padding: var(--spacing-small);
+    border-radius: var(--border-radius-default);
+    border: 1px solid #ccc;
+    margin-bottom: var(--spacing-medium);
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    max-width: 300px;
+}
+
+.result-view-container button {
+    display: inline-block; /* Ensure buttons are block or inline-block for margin */
+    margin-top: var(--spacing-medium);
+    margin-left: var(--spacing-small);
+    margin-right: var(--spacing-small);
+}
+
+/* Specific style for play again button if needed, e.g., primary action color */
+#play-again-button {
+    background-color: var(--color-secondary);
+     /* color: var(--color-text-light); /* Ensure contrast if changing background */
+}
+#play-again-button:hover {
+    background-color: #cda0e8; /* Darker shade of secondary */
+}
+
+/* Style for the new "Start New Game" button */
+#start-new-game-button {
+    background-color: var(--color-feedback-incorrect); /* A more "destructive" or "warning" color */
+    color: var(--color-text-dark); /* Changed to dark text for better contrast */
+}
+
+#start-new-game-button:hover {
+    background-color: #d32f2f; /* Darker red */
+    color: var(--color-text-light); /* Text can be light on darker hover */
 }
 
 #feedback-container p {

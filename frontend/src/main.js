@@ -3,7 +3,7 @@ import { DragCard } from './components/DragCard.js';
 import { initializeDragAndDrop } from './drag.js';
 import { scorer } from './scorer.js';
 import { ResultView } from './components/ResultView.js';
-import { getXP, getLevel, addXP, getXPForNextLevel, getLevelProgressPercentage, checkAndAwardBadges } from './gamification.js';
+import { getXP, getLevel, addXP, getXPForNextLevel, getLevelProgressPercentage, checkAndAwardBadges, resetGamification, getEarnedBadges, BADGES as DefinedBadges } from './gamification.js';
 
 // --- DOM Elements ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const xpBarFill = document.getElementById('xp-bar-fill');
     const levelUpNotification = document.getElementById('level-up-notification');
     const newLevelAchievedDisplay = document.getElementById('new-level-achieved');
+    const playerBadgesContainer = document.getElementById('player-badges-container');
 
     // --- Game State ---
     let sentences = [];
@@ -58,6 +59,40 @@ document.addEventListener('DOMContentLoaded', () => {
         if (xpBarFill) {
             xpBarFill.style.width = `${progressPercent}%`;
         }
+        updatePlayerBadgesUI();
+    }
+
+    function updatePlayerBadgesUI() {
+        if (!playerBadgesContainer) return;
+        playerBadgesContainer.innerHTML = ''; // Clear existing badges
+        const earnedBadges = getEarnedBadges(); // { badgeId: timestamp, ... }
+        const earnedBadgeIds = Object.keys(earnedBadges);
+
+        if (earnedBadgeIds.length === 0) {
+            // playerBadgesContainer.textContent = 'Brak odznak'; // Optional: message if no badges
+            return;
+        }
+
+        earnedBadgeIds.forEach(badgeId => {
+            const badgeDef = DefinedBadges[badgeId];
+            if (badgeDef) {
+                const badgeElement = document.createElement('span');
+                badgeElement.className = 'player-badge';
+                badgeElement.title = `${badgeDef.name} - ${badgeDef.description}`;
+                
+                const iconElement = document.createElement('i');
+                iconElement.className = badgeDef.icon; // e.g., "fas fa-crown"
+                badgeElement.appendChild(iconElement);
+                
+                // Optionally, add badge name next to icon if design allows
+                // const nameElement = document.createElement('span');
+                // nameElement.textContent = badgeDef.name;
+                // nameElement.style.marginLeft = '4px';
+                // badgeElement.appendChild(nameElement);
+
+                playerBadgesContainer.appendChild(badgeElement);
+            }
+        });
     }
 
     function showLevelUpNotification(newLevel) {
@@ -206,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // timeTakenSeconds: undefined // Could be added if a timer is implemented
         };
         checkAndAwardBadges(evaluationDetails);
+        updatePlayerBadgesUI();
         // --- End Badge Logic ---
 
         scoreDisplay.textContent = `Wynik za to zdanie: ${scoreResult.totalScore} pkt. Łączny wynik: ${totalGameScore}`;
@@ -252,7 +288,14 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsArea.style.display = 'none';
         mainHeader.textContent = 'Wyniki Gry';
         updatePlayerStatsUI(); // Ensure stats are up-to-date on results screen
-        const resultViewElement = ResultView(totalGameScore, startGame);
+        
+        const handleResetAndStartGame = () => {
+            resetGamification(); // Resets XP, Level, Badges, Badge Progress
+            // High scores in ResultView are separate, allow them to persist or add reset for them if needed.
+            startGame(); // Resets sentence index, total game score, and re-renders game.
+        };
+
+        const resultViewElement = ResultView(totalGameScore, startGame, handleResetAndStartGame);
         const appContainer = document.querySelector('.app-container');
         const footer = appContainer.querySelector('footer');
         if (footer) {

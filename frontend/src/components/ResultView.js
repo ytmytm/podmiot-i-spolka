@@ -34,9 +34,10 @@ function saveHighScore(name, score) {
  *
  * @param {number} currentScore - The score achieved in the current game session.
  * @param {function} onPlayAgainCallback - Callback function when "Play Again" is clicked.
+ * @param {function} onStartNewGameCallback - Callback function when "Start New Game" is clicked.
  * @returns {HTMLElement} The main div element of the results view.
  */
-export function ResultView(currentScore, onPlayAgainCallback) {
+export function ResultView(currentScore, onPlayAgainCallback, onStartNewGameCallback) {
     const view = document.createElement('div');
     view.className = 'result-view-container';
 
@@ -97,6 +98,16 @@ export function ResultView(currentScore, onPlayAgainCallback) {
     }
     view.appendChild(playAgainButton);
 
+    // --- Start New Game Button ---
+    const startNewGameButton = document.createElement('button');
+    startNewGameButton.id = 'start-new-game-button';
+    startNewGameButton.className = 'start-new-game-button'; // Add class for styling
+    startNewGameButton.textContent = 'Zacznij Nową Grę (resetuj postępy)';
+    if (onStartNewGameCallback) {
+        startNewGameButton.addEventListener('click', onStartNewGameCallback);
+    }
+    view.appendChild(startNewGameButton);
+
     return view;
 }
 
@@ -132,9 +143,10 @@ export function testResultView() {
     saveHighScore("Testowy Gracz 2", 120);
 
     const mockOnPlayAgain = () => console.log("Play Again clicked!");
+    const mockOnStartNew = () => console.log("Start New Game clicked!");
     
-    const view1 = ResultView(80, mockOnPlayAgain); // Score doesn't make leaderboard initially
-    const view2 = ResultView(150, mockOnPlayAgain); // Score makes leaderboard
+    const view1 = ResultView(80, mockOnPlayAgain, mockOnStartNew); // Score doesn't make leaderboard initially
+    const view2 = ResultView(150, mockOnPlayAgain, mockOnStartNew); // Score makes leaderboard
 
     // To visually test, you'd append these to the DOM:
     // document.body.innerHTML = ''; // Clear body

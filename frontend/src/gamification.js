@@ -16,14 +16,13 @@ export const BADGES = {
         icon: 'fas fa-crown', // Example Font Awesome icon class
         criteria: { type: 'consecutiveCorrect', partOfSpeech: 'podmiot', count: 10 }
     },
-    // Example of another badge type
-    // PERFECT_STREAK_3: {
-    //     id: 'PERFECT_STREAK_3',
-    //     name: 'Perfekcyjna Seria (3)',
-    //     description: 'Rozwiąż 3 zdania z rzędu bezbłędnie.',
-    //     icon: 'fas fa-star',
-    //     criteria: { type: 'perfectSentencesStreak', count: 3 }
-    // }
+    PERFECT_STREAK_3: {
+        id: 'PERFECT_STREAK_3',
+        name: 'Perfekcyjna Seria (3)',
+        description: 'Rozwiąż 3 zdania z rzędu bezbłędnie.',
+        icon: 'fas fa-star',
+        criteria: { type: 'perfectSentencesStreak', count: 3 }
+    }
 };
 
 const EARNED_BADGES_KEY = 'czesciZdaniaEarnedBadges';
@@ -306,20 +305,23 @@ export function checkAndAwardBadges(evaluationDetails) {
         }
     }
 
-    // --- Check for PERFECT_STREAK_3 badge (example) ---
-    // const perfectStreakBadge = BADGES.PERFECT_STREAK_3;
-    // if (perfectStreakBadge && !earnedBadges[perfectStreakBadge.id] && evaluationDetails.isPerfectSentence !== undefined) {
-    //     let perfectSentenceStreak = getBadgeProgress('perfect_sentence_streak');
-    //     if (evaluationDetails.isPerfectSentence) {
-    //         perfectSentenceStreak++;
-    //     } else {
-    //         perfectSentenceStreak = 0; // Reset streak on any imperfect sentence
-    //     }
-    //     saveBadgeProgress('perfect_sentence_streak', perfectSentenceStreak);
-    //     if (perfectSentenceStreak >= perfectStreakBadge.criteria.count) {
-    //         awardBadge(perfectStreakBadge.id);
-    //     }
-    // }
+    // --- Check for PERFECT_STREAK_3 badge ---
+    const perfectStreakBadge = BADGES.PERFECT_STREAK_3;
+    if (perfectStreakBadge && !earnedBadges[perfectStreakBadge.id] && evaluationDetails.isPerfectSentence !== undefined) {
+        let perfectSentenceStreak = getBadgeProgress('perfect_sentence_streak');
+        if (evaluationDetails.isPerfectSentence) {
+            perfectSentenceStreak++;
+        } else {
+            perfectSentenceStreak = 0; // Reset streak on any imperfect sentence
+        }
+        saveBadgeProgress('perfect_sentence_streak', perfectSentenceStreak);
+        if (perfectSentenceStreak >= perfectStreakBadge.criteria.count) {
+            if(awardBadge(perfectStreakBadge.id)) {
+                // If badge was newly awarded, maybe reset progress to allow re-earning or for tiered badges later?
+                // For now, it just awards once.
+            }
+        }
+    }
     
     // Add checks for other badges here
 } 
