@@ -5,6 +5,19 @@ import { scorer } from './scorer.js';
 import { ResultView } from './components/ResultView.js';
 import { getXP, getLevel, addXP, getXPForNextLevel, getLevelProgressPercentage, checkAndAwardBadges, resetGamification, getEarnedBadges, BADGES as DefinedBadges } from './gamification.js';
 
+// --- Service Worker Registration ---
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/public/service-worker.js')
+      .then(registration => {
+        console.log('Service Worker registered: ', registration);
+      })
+      .catch(registrationError => {
+        console.log('Service Worker registration failed: ', registrationError);
+      });
+  });
+}
+
 // --- DOM Elements ---
 document.addEventListener('DOMContentLoaded', () => {
     const sentenceDisplayContainer = document.getElementById('sentence-display-container');
