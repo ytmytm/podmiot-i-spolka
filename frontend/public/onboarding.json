@@ -52,12 +52,6 @@
       "position": "bottom"
     },
     {
-      "id": "tooltip_parts_tray",
-      "targetElement": "#parts-tray-container",
-      "text": "To Twoje etykiety z częściami zdania. Chwyć jedną i przeciągnij na słowo w zdaniu.",
-      "position": "top"
-    },
-    {
       "id": "tooltip_drag_card",
       "targetElement": ".drag-card",
       "text": "To jest etykieta części zdania (np. Podmiot, Orzeczenie). Przeciągnij ją na odpowiednie słowo.",
@@ -65,10 +59,45 @@
       "dynamic": true
     },
     {
-      "id": "tooltip_word_slot",
-      "targetElement": ".word-slot",
-      "text": "To jest słowo ze zdania. Upuść na nie etykietę, jeśli uważasz, że pasuje.",
-      "position": "top",
+      "id": "tooltip_drag_card_podmiot",
+      "targetElement": ".drag-card[data-part-of-speech='Podmiot']",
+      "text": "Podmiot: To 'ktoś' lub 'coś', co wykonuje czynność w zdaniu. Odpowiada na pytania: kto? co? Np. W zdaniu 'Kot pije mleko', 'Kot' jest podmiotem.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_orzeczenie",
+      "targetElement": ".drag-card[data-part-of-speech='Orzeczenie']",
+      "text": "Orzeczenie: To najważniejsza część zdania! Mówi nam, co robi podmiot lub co się z nim dzieje. Odpowiada na pytania: co robi? co się z nim dzieje? Np. W zdaniu 'Pies szczeka', 'szczeka' jest orzeczeniem.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_dopelnienie",
+      "targetElement": ".drag-card[data-part-of-speech='Dopełnienie']",
+      "text": "Dopełnienie: Określa czasownik. Odpowiada na pytania przypadków zależnych (kogo? czego? komu? czemu? kogo? co? z kim? z czym? o kim? o czym?). Np. 'Mama czyta (co?) książkę' - 'książkę' to dopełnienie.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_przydawka",
+      "targetElement": ".drag-card[data-part-of-speech='Przydawka']",
+      "text": "Przydawka: Określa rzeczownik (czyli np. podmiot lub dopełnienie). Odpowiada na pytania: jaki? który? czyj? ile? czego? z czego? Np. '(Jaki?) Czerwony samochód jedzie' - 'czerwony' to przydawka.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik']",
+      "text": "Okolicznik: Określa czasownik (czynność). Mówi nam więcej o tym, jak, gdzie, kiedy lub dlaczego coś się dzieje. Odpowiada na pytania: jak? gdzie? kiedy? po co? dlaczego? Np. 'Ptak śpiewa (jak?) głośno' - 'głośno' to okolicznik.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_other",
+      "targetElement": ".drag-card:not([data-part-of-speech='Podmiot']):not([data-part-of-speech='Orzeczenie']):not([data-part-of-speech='Dopełnienie']):not([data-part-of-speech='Przydawka']):not([data-part-of-speech='Okolicznik'])",
+      "text": "To etykieta części zdania. Przeciągnij ją na słowo, które według Ciebie jest tą częścią zdania.",
+      "position": "bottom",
       "dynamic": true
     },
     {

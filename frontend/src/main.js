@@ -184,6 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         partsTrayContainer.innerHTML = '<h2>Części Zdania:</h2>'; // Clear previous cards if any
         availablePartsOfSpeech.forEach(part => {
             const card = DragCard(part, part); // Label is same as part for now
+            card.setAttribute('data-part-of-speech', part);
             partsTrayContainer.appendChild(card);
         });
         

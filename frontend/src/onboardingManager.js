@@ -1,5 +1,6 @@
 const ONBOARDING_CONFIG_PATH = '/public/onboarding.json'; // Corrected path for Nginx serving
 const ONBOARDING_COMPLETED_KEY = 'onboardingCompleted';
+const TOOLTIP_DELAY = 500; // 500ms delay
 
 let onboardingConfig = null;
 let currentStepIndex = 0;
@@ -11,6 +12,7 @@ let onboardingHighlightElement = null; // For highlighting specific elements
 
 // --- Tooltip specific variables ---
 let tooltipElement = null;
+let tooltipTimeoutId = null; // For delayed appearance
 
 async function fetchOnboardingConfig() {
     if (onboardingConfig) return onboardingConfig;
@@ -100,44 +102,54 @@ function showTooltip(targetElement, text, position = 'top') {
     if (!tooltipElement) createTooltipElement();
     if (!tooltipElement || !targetElement) return;
 
-    tooltipElement.textContent = text;
-    tooltipElement.style.display = 'block';
-
-    const targetRect = targetElement.getBoundingClientRect();
-    const tooltipRect = tooltipElement.getBoundingClientRect();
-
-    let top, left;
-
-    switch (position) {
-        case 'bottom':
-            top = targetRect.bottom + 8 + window.scrollY;
-            left = targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2) + window.scrollX;
-            break;
-        case 'left':
-            top = targetRect.top + (targetRect.height / 2) - (tooltipRect.height / 2) + window.scrollY;
-            left = targetRect.left - tooltipRect.width - 8 + window.scrollX;
-            break;
-        case 'right':
-            top = targetRect.top + (targetRect.height / 2) - (tooltipRect.height / 2) + window.scrollY;
-            left = targetRect.right + 8 + window.scrollX;
-            break;
-        case 'top':
-        default:
-            top = targetRect.top - tooltipRect.height - 8 + window.scrollY;
-            left = targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2) + window.scrollX;
-            break;
+    // Clear any existing timeout to prevent multiple tooltips if mouse moves quickly
+    if (tooltipTimeoutId) {
+        clearTimeout(tooltipTimeoutId);
     }
-    // Ensure tooltip stays within viewport (basic boundary detection)
-    if (left < 0) left = 8;
-    if (left + tooltipRect.width > window.innerWidth) left = window.innerWidth - tooltipRect.width - 8;
-    if (top < 0) top = 8; 
-    // No check for bottom overflow here, can be added if needed
 
-    tooltipElement.style.top = `${top}px`;
-    tooltipElement.style.left = `${left}px`;
+    tooltipTimeoutId = setTimeout(() => {
+        tooltipElement.textContent = text;
+        tooltipElement.style.display = 'block';
+
+        const targetRect = targetElement.getBoundingClientRect();
+        const tooltipRect = tooltipElement.getBoundingClientRect();
+
+        let top, left;
+
+        switch (position) {
+            case 'bottom':
+                top = targetRect.bottom + 8 + window.scrollY;
+                left = targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2) + window.scrollX;
+                break;
+            case 'left':
+                top = targetRect.top + (targetRect.height / 2) - (tooltipRect.height / 2) + window.scrollY;
+                left = targetRect.left - tooltipRect.width - 8 + window.scrollX;
+                break;
+            case 'right':
+                top = targetRect.top + (targetRect.height / 2) - (tooltipRect.height / 2) + window.scrollY;
+                left = targetRect.right + 8 + window.scrollX;
+                break;
+            case 'top':
+            default:
+                top = targetRect.top - tooltipRect.height - 8 + window.scrollY;
+                left = targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2) + window.scrollX;
+                break;
+        }
+        // Ensure tooltip stays within viewport (basic boundary detection)
+        if (left < 0) left = 8;
+        if (left + tooltipRect.width > window.innerWidth) left = window.innerWidth - tooltipRect.width - 8;
+        if (top < 0) top = 8;
+
+        tooltipElement.style.top = `${top}px`;
+        tooltipElement.style.left = `${left}px`;
+    }, TOOLTIP_DELAY);
 }
 
 function hideTooltip() {
+    if (tooltipTimeoutId) {
+        clearTimeout(tooltipTimeoutId);
+        tooltipTimeoutId = null;
+    }
     if (tooltipElement) {
         tooltipElement.style.display = 'none';
     }
@@ -151,9 +163,12 @@ function initTooltips() {
     createTooltipElement(); // Ensure the tooltip div exists
 
     onboardingConfig.tooltips.forEach(tooltipData => {
-        // For dynamic elements, we need to use event delegation or re-attach if DOM changes significantly.
-        // For simplicity, this will attach to elements present at init time.
-        // If elements are added later (like .word-slot), this needs a more robust solution (e.g. MutationObserver or delegated events).
+        // Skip tooltips for .word-slot explicitly if any definition remains (belt and braces)
+        if (tooltipData.targetElement === '.word-slot') {
+            console.log('Skipping .word-slot tooltip definition.');
+            return; 
+        }
+
         const targets = document.querySelectorAll(tooltipData.targetElement);
         
         targets.forEach(target => {
@@ -174,7 +189,11 @@ async function initOnboarding() {
     if (!config || !config.onboardingSteps || config.onboardingSteps.length === 0) {
         console.log('No onboarding steps configured or failed to load config.');
         // Still try to init tooltips if onboarding steps are missing but tooltips might exist
-        if (config && config.tooltips) initTooltips(); 
+        if (config && config.tooltips) {
+            // Filter out tooltips for .word-slot before initialization
+            config.tooltips = config.tooltips.filter(tooltip => tooltip.targetElement !== '.word-slot');
+            initTooltips(); 
+        }
         return;
     }
 
@@ -187,7 +206,10 @@ async function initOnboarding() {
     if (!onboardingModalElement || !onboardingTitleElement || !onboardingTextElement || !onboardingNextButtonElement) {
         console.error('Onboarding modal elements not found in the DOM. Onboarding cannot start.');
         // Try to init tooltips even if modal parts are missing
-        if (config.tooltips) initTooltips();
+        if (config && config.tooltips) {
+            config.tooltips = config.tooltips.filter(tooltip => tooltip.targetElement !== '.word-slot');
+            initTooltips();
+        }
         return;
     }
 
@@ -206,6 +228,10 @@ async function initOnboarding() {
         showStep(currentStepIndex);
     } else {
         console.log('Onboarding already completed. Initializing tooltips.');
+        // Filter out tooltips for .word-slot before initialization
+        if (onboardingConfig && onboardingConfig.tooltips) {
+             onboardingConfig.tooltips = onboardingConfig.tooltips.filter(tooltip => tooltip.targetElement !== '.word-slot');
+        }
         initTooltips(); // Initialize tooltips if onboarding was already done
     }
 }
