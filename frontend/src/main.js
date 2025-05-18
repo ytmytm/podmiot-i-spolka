@@ -4,6 +4,7 @@ import { initializeDragAndDrop } from './drag.js';
 import { scorer } from './scorer.js';
 import { ResultView } from './components/ResultView.js';
 import { getXP, getLevel, addXP, getXPForNextLevel, getLevelProgressPercentage, checkAndAwardBadges, resetGamification, getEarnedBadges, BADGES as DefinedBadges } from './gamification.js';
+import { initOnboarding, resetOnboardingState } from './onboardingManager.js';
 
 // --- Service Worker Registration ---
 if ('serviceWorker' in navigator) {
@@ -19,7 +20,9 @@ if ('serviceWorker' in navigator) {
 }
 
 // --- DOM Elements ---
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await initOnboarding();
+
     const sentenceDisplayContainer = document.getElementById('sentence-display-container');
     const partsTrayContainer = document.getElementById('parts-tray-container');
     const checkAnswersButton = document.getElementById('check-answers-button');
@@ -351,6 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Shared function to reset and start a new game
     const resetAndStartNewGame = () => {
         resetGamification(); // Resets XP, Level, Badges, Badge Progress from gamification.js
+        resetOnboardingState(); // Reset onboarding state so it shows again
         // High scores in ResultView are separate, allow them to persist for now.
         // If ResultView is visible, it might be good to remove it or hide it.
         const existingResultView = document.querySelector('.result-view-container');

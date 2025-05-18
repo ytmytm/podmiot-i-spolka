@@ -1,0 +1,129 @@
+{
+  "onboardingSteps": [
+    {
+      "id": "step1_welcome",
+      "title": "Witaj w Grze 'Części Zdania'!",
+      "text": "Naucz się rozpoznawać części zdania, bawiąc się! Przeciągaj etykiety na słowa i zdobywaj punkty.",
+      "targetElement": null,
+      "imageUrl": null,
+      "buttonText": "Zaczynajmy!"
+    },
+    {
+      "id": "step2_drag_parts",
+      "title": "Jak grać? To proste!",
+      "text": "Zobaczysz zdanie i etykiety z częściami zdania. Chwyć etykietę (np. 'Podmiot') i przeciągnij ją na słowo w zdaniu, które Twoim zdaniem jest podmiotem.",
+      "targetElement": "#parts-tray-container",
+      "highlightElement": ".drag-card",
+      "imageUrl": null,
+      "buttonText": "Rozumiem!"
+    },
+    {
+      "id": "step3_drop_words",
+      "title": "Upuść na słowo",
+      "text": "Gdy przeciągniesz etykietę nad właściwe słowo, puść ją. Słowo zmieni wygląd, pokazując Twoją odpowiedź.",
+      "targetElement": "#sentence-display-container",
+      "highlightElement": ".word-slot",
+      "imageUrl": null,
+      "buttonText": "Jasne!"
+    },
+    {
+      "id": "step4_check_answers",
+      "title": "Sprawdź odpowiedzi",
+      "text": "Gdy oznaczysz wszystkie części zdania, które potrafisz, kliknij przycisk 'Sprawdź Odpowiedzi'. Zobaczysz, jak Ci poszło!",
+      "targetElement": "#check-answers-button",
+      "imageUrl": null,
+      "buttonText": "OK!"
+    },
+    {
+      "id": "step5_scoring",
+      "title": "Punkty i Poziomy",
+      "text": "Za poprawne odpowiedzi zdobywasz punkty (XP) i awansujesz na kolejne poziomy. Możesz też zdobywać odznaki za super wyniki!",
+      "targetElement": ".player-stats",
+      "highlightElement": "#player-xp-bar",
+      "imageUrl": null,
+      "buttonText": "Gramy!"
+    }
+  ],
+  "tooltips": [
+    {
+      "id": "tooltip_sentence_board",
+      "targetElement": "#sentence-display-container",
+      "text": "Tutaj pojawia się zdanie do analizy. Przeciągnij na te słowa etykiety z częściami zdania.",
+      "position": "bottom"
+    },
+    {
+      "id": "tooltip_parts_tray",
+      "targetElement": "#parts-tray-container",
+      "text": "To Twoje etykiety z częściami zdania. Chwyć jedną i przeciągnij na słowo w zdaniu.",
+      "position": "top"
+    },
+    {
+      "id": "tooltip_drag_card",
+      "targetElement": ".drag-card",
+      "text": "To jest etykieta części zdania (np. Podmiot, Orzeczenie). Przeciągnij ją na odpowiednie słowo.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_word_slot",
+      "targetElement": ".word-slot",
+      "text": "To jest słowo ze zdania. Upuść na nie etykietę, jeśli uważasz, że pasuje.",
+      "position": "top",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_check_button",
+      "targetElement": "#check-answers-button",
+      "text": "Kliknij, aby sprawdzić swoje odpowiedzi i zobaczyć wynik.",
+      "position": "top"
+    },
+    {
+      "id": "tooltip_next_button",
+      "targetElement": "#next-sentence-button",
+      "text": "Kliknij, aby przejść do następnego zdania.",
+      "position": "top"
+    },
+    {
+      "id": "tooltip_score_display",
+      "targetElement": "#score-display",
+      "text": "Tutaj zobaczysz swój wynik za ostatnie zdanie i łączny wynik gry.",
+      "position": "bottom"
+    },
+    {
+      "id": "tooltip_feedback_area",
+      "targetElement": "#feedback-container",
+      "text": "Po sprawdzeniu odpowiedzi, tutaj pojawią się szczegółowe informacje o tym, co było dobrze, a co źle.",
+      "position": "top"
+    },
+    {
+      "id": "tooltip_player_level",
+      "targetElement": "#player-level",
+      "text": "Twój aktualny poziom w grze. Zdobywaj punkty XP, aby awansować!",
+      "position": "bottom"
+    },
+    {
+      "id": "tooltip_player_xp",
+      "targetElement": "#player-xp",
+      "text": "Twoje punkty doświadczenia (XP). Potrzebujesz ich, aby przejść na następny poziom.",
+      "position": "bottom"
+    },
+    {
+      "id": "tooltip_xp_bar",
+      "targetElement": "#xp-bar-fill",
+      "text": "Ten pasek pokazuje, ile jeszcze XP brakuje Ci do następnego poziomu.",
+      "position": "top"
+    },
+    {
+      "id": "tooltip_player_badges",
+      "targetElement": "#player-badges-container",
+      "text": "Twoje zdobyte odznaki! Przyznawane za specjalne osiągnięcia w grze.",
+      "position": "bottom"
+    },
+    {
+      "id": "tooltip_click_to_correct_hint",
+      "targetElement": "#click-to-correct-hint",
+      "text": "Jeśli się pomylisz i upuścisz etykietę na złe słowo, po prostu kliknij na to słowo, aby usunąć swoją odpowiedź i spróbować jeszcze raz!",
+      "position": "top"
+    }
+  ]
+} 
