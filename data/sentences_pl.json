@@ -1,220 +1,327 @@
 [
   {
     "id": 1,
-    "sentence": "Mama czyta.",
+    "sentence": "Mama czyta książkę.",
     "level": 1,
     "tokens": [
       {"word": "Mama", "part": "Podmiot"},
-      {"word": "czyta", "part": "Orzeczenie"}
+      {"word": "czyta", "part": "Orzeczenie"},
+      {"word": "książkę", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 2,
-    "sentence": "Pies biega.",
+    "sentence": "Pies goni kota.",
     "level": 1,
     "tokens": [
       {"word": "Pies", "part": "Podmiot"},
-      {"word": "biega", "part": "Orzeczenie"}
+      {"word": "goni", "part": "Orzeczenie"},
+      {"word": "kota", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 3,
-    "sentence": "Słońce zachodzi.",
+    "sentence": "Słońce oświetla ziemię.",
     "level": 1,
     "tokens": [
       {"word": "Słońce", "part": "Podmiot"},
-      {"word": "zachodzi", "part": "Orzeczenie"}
+      {"word": "oświetla", "part": "Orzeczenie"},
+      {"word": "ziemię", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 4,
-    "sentence": "Dzieci się bawią.",
+    "sentence": "Dzieci budują zamek.",
     "level": 1,
     "tokens": [
       {"word": "Dzieci", "part": "Podmiot"},
-      {"word": "się bawią", "part": "Orzeczenie"}
+      {"word": "budują", "part": "Orzeczenie"},
+      {"word": "zamek", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 5,
-    "sentence": "Nauczyciel mówi.",
+    "sentence": "Nauczyciel uczy dzieci.",
     "level": 1,
     "tokens": [
       {"word": "Nauczyciel", "part": "Podmiot"},
-      {"word": "mówi", "part": "Orzeczenie"}
+      {"word": "uczy", "part": "Orzeczenie"},
+      {"word": "dzieci", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 6,
-    "sentence": "Wesoły chłopiec skacze.",
+    "sentence": "Wesoły chłopiec rzuca piłkę.",
     "level": 2,
     "tokens": [
       {"word": "Wesoły", "part": "Przydawka"},
       {"word": "chłopiec", "part": "Podmiot"},
-      {"word": "skacze", "part": "Orzeczenie"}
+      {"word": "rzuca", "part": "Orzeczenie"},
+      {"word": "piłkę", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 7,
-    "sentence": "Stary dąb rośnie.",
+    "sentence": "Stary dąb daje cień.",
     "level": 2,
     "tokens": [
       {"word": "Stary", "part": "Przydawka"},
       {"word": "dąb", "part": "Podmiot"},
-      {"word": "rośnie", "part": "Orzeczenie"}
+      {"word": "daje", "part": "Orzeczenie"},
+      {"word": "cień", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 8,
-    "sentence": "Czerwony samochód jedzie.",
+    "sentence": "Czerwony samochód przewozi pasażerów.",
     "level": 2,
     "tokens": [
       {"word": "Czerwony", "part": "Przydawka"},
       {"word": "samochód", "part": "Podmiot"},
-      {"word": "jedzie", "part": "Orzeczenie"}
+      {"word": "przewozi", "part": "Orzeczenie"},
+      {"word": "pasażerów", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 9,
-    "sentence": "Nowa książka leży.",
+    "sentence": "Nowa książka zawiera wiedzę.",
     "level": 2,
     "tokens": [
       {"word": "Nowa", "part": "Przydawka"},
       {"word": "książka", "part": "Podmiot"},
-      {"word": "leży", "part": "Orzeczenie"}
+      {"word": "zawiera", "part": "Orzeczenie"},
+      {"word": "wiedzę", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 10,
-    "sentence": "Duże chmury płyną.",
+    "sentence": "Duże chmury przynoszą deszcz.",
     "level": 2,
     "tokens": [
       {"word": "Duże", "part": "Przydawka"},
       {"word": "chmury", "part": "Podmiot"},
-      {"word": "płyną", "part": "Orzeczenie"}
+      {"word": "przynoszą", "part": "Orzeczenie"},
+      {"word": "deszcz", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 11,
-    "sentence": "Kot śpi w koszyku.",
+    "sentence": "Kot pije mleko w koszyku.",
     "level": 3,
     "tokens": [
       {"word": "Kot", "part": "Podmiot"},
-      {"word": "śpi", "part": "Orzeczenie"},
+      {"word": "pije", "part": "Orzeczenie"},
+      {"word": "mleko", "part": "Dopełnienie"},
       {"word": "w koszyku", "part": "Okolicznik Miejsca"}
     ]
   },
   {
     "id": 12,
-    "sentence": "Zielona trawa rośnie na łące.",
+    "sentence": "Zielona trawa pokrywa łąkę.",
     "level": 3,
     "tokens": [
       {"word": "Zielona", "part": "Przydawka"},
       {"word": "trawa", "part": "Podmiot"},
-      {"word": "rośnie", "part": "Orzeczenie"},
+      {"word": "pokrywa", "part": "Orzeczenie"},
+      {"word": "łąkę", "part": "Dopełnienie"},
       {"word": "na łące", "part": "Okolicznik Miejsca"}
     ]
   },
   {
     "id": 13,
-    "sentence": "Dzieci bawią się tam.",
+    "sentence": "Dzieci oglądają tam przedstawienie.",
     "level": 3,
     "tokens": [
       {"word": "Dzieci", "part": "Podmiot"},
-      {"word": "się bawią", "part": "Orzeczenie"},
-      {"word": "tam", "part": "Okolicznik Miejsca"}
+      {"word": "oglądają", "part": "Orzeczenie"},
+      {"word": "tam", "part": "Okolicznik Miejsca"},
+      {"word": "przedstawienie", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 14,
-    "sentence": "Oni jutro pójdą.",
+    "sentence": "Oni jutro napiszą test.",
     "level": 3,
     "tokens": [
       {"word": "Oni", "part": "Podmiot"},
       {"word": "jutro", "part": "Okolicznik Czasu"},
-      {"word": "pójdą", "part": "Orzeczenie"}
+      {"word": "napiszą", "part": "Orzeczenie"},
+      {"word": "test", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 15,
-    "sentence": "Ciekawy film zaczyna się wieczorem.",
+    "sentence": "Ciekawy film przyciąga widzów wieczorem.",
     "level": 3,
     "tokens": [
       {"word": "Ciekawy", "part": "Przydawka"},
       {"word": "film", "part": "Podmiot"},
-      {"word": "zaczyna się", "part": "Orzeczenie"},
+      {"word": "przyciąga", "part": "Orzeczenie"},
+      {"word": "widzów", "part": "Dopełnienie"},
       {"word": "wieczorem", "part": "Okolicznik Czasu"}
     ]
   },
   {
     "id": 16,
-    "sentence": "Słońce świeci codziennie.",
+    "sentence": "Słońce daje nam światło codziennie.",
     "level": 3,
     "tokens": [
       {"word": "Słońce", "part": "Podmiot"},
-      {"word": "świeci", "part": "Orzeczenie"},
+      {"word": "daje", "part": "Orzeczenie"},
+      {"word": "nam", "part": "Dopełnienie"},
+      {"word": "światło", "part": "Dopełnienie"},
       {"word": "codziennie", "part": "Okolicznik Czasu"}
     ]
   },
   {
     "id": 17,
-    "sentence": "Chłopiec biegnie szybko.",
+    "sentence": "Chłopiec szybko złapał piłkę.",
     "level": 3,
     "tokens": [
       {"word": "Chłopiec", "part": "Podmiot"},
-      {"word": "biegnie", "part": "Orzeczenie"},
-      {"word": "szybko", "part": "Okolicznik Sposobu"}
+      {"word": "szybko", "part": "Okolicznik Sposobu"},
+      {"word": "złapał", "part": "Orzeczenie"},
+      {"word": "piłkę", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 18,
-    "sentence": "Mały ptaszek pięknie śpiewa.",
+    "sentence": "Mały ptaszek pięknie śpiewa piosenkę.",
     "level": 3,
     "tokens": [
       {"word": "Mały", "part": "Przydawka"},
       {"word": "ptaszek", "part": "Podmiot"},
       {"word": "pięknie", "part": "Okolicznik Sposobu"},
-      {"word": "śpiewa", "part": "Orzeczenie"}
+      {"word": "śpiewa", "part": "Orzeczenie"},
+      {"word": "piosenkę", "part": "Dopełnienie"}
     ]
   },
   {
     "id": 19,
-    "sentence": "Uczeń czyta dla przyjemności.",
+    "sentence": "Uczeń czyta książkę dla przyjemności.",
     "level": 3,
     "tokens": [
       {"word": "Uczeń", "part": "Podmiot"},
       {"word": "czyta", "part": "Orzeczenie"},
+      {"word": "książkę", "part": "Dopełnienie"},
       {"word": "dla przyjemności", "part": "Okolicznik Celu"}
     ]
   },
   {
     "id": 20,
-    "sentence": "Mama poszła po zakupy.",
+    "sentence": "Mama kupiła chleb po zakupy.",
     "level": 3,
     "tokens": [
       {"word": "Mama", "part": "Podmiot"},
-      {"word": "poszła", "part": "Orzeczenie"},
+      {"word": "kupiła", "part": "Orzeczenie"},
+      {"word": "chleb", "part": "Dopełnienie"},
       {"word": "po zakupy", "part": "Okolicznik Celu"}
     ]
   },
   {
     "id": 21,
-    "sentence": "Drzewo upadło z powodu wiatru.",
+    "sentence": "Drzewo straciło liście z powodu wiatru.",
     "level": 3,
     "tokens": [
       {"word": "Drzewo", "part": "Podmiot"},
-      {"word": "upadło", "part": "Orzeczenie"},
+      {"word": "straciło", "part": "Orzeczenie"},
+      {"word": "liście", "part": "Dopełnienie"},
       {"word": "z powodu wiatru", "part": "Okolicznik Przyczyny"}
     ]
   },
   {
     "id": 22,
-    "sentence": "Janek płakał z radości.",
+    "sentence": "Janek otrzymał prezent z radości.",
     "level": 3,
     "tokens": [
       {"word": "Janek", "part": "Podmiot"},
-      {"word": "płakał", "part": "Orzeczenie"},
+      {"word": "otrzymał", "part": "Orzeczenie"},
+      {"word": "prezent", "part": "Dopełnienie"},
       {"word": "z radości", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 23,
+    "sentence": "Ala ma kota.",
+    "level": 1,
+    "tokens": [
+      {"word": "Ala", "part": "Podmiot"},
+      {"word": "ma", "part": "Orzeczenie"},
+      {"word": "kota", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 24,
+    "sentence": "Tata kupił samochód.",
+    "level": 1,
+    "tokens": [
+      {"word": "Tata", "part": "Podmiot"},
+      {"word": "kupił", "part": "Orzeczenie"},
+      {"word": "samochód", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 25,
+    "sentence": "Babcia piecze ciasto.",
+    "level": 2,
+    "tokens": [
+      {"word": "Babcia", "part": "Podmiot"},
+      {"word": "piecze", "part": "Orzeczenie"},
+      {"word": "ciasto", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 26,
+    "sentence": "Pszczoła zbiera nektar.",
+    "level": 2,
+    "tokens": [
+      {"word": "Pszczoła", "part": "Podmiot"},
+      {"word": "zbiera", "part": "Orzeczenie"},
+      {"word": "nektar", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 27,
+    "sentence": "Rolnik sieje zboże na polu.",
+    "level": 3,
+    "tokens": [
+      {"word": "Rolnik", "part": "Podmiot"},
+      {"word": "sieje", "part": "Orzeczenie"},
+      {"word": "zboże", "part": "Dopełnienie"},
+      {"word": "na polu", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 28,
+    "sentence": "Dziecko rysuje obrazek kredkami.",
+    "level": 3,
+    "tokens": [
+      {"word": "Dziecko", "part": "Podmiot"},
+      {"word": "rysuje", "part": "Orzeczenie"},
+      {"word": "obrazek", "part": "Dopełnienie"},
+      {"word": "kredkami", "part": "Okolicznik Narzędzia"}
+    ]
+  },
+  {
+    "id": 29,
+    "sentence": "Listonosz przynosi listy codziennie.",
+    "level": 3,
+    "tokens": [
+      {"word": "Listonosz", "part": "Podmiot"},
+      {"word": "przynosi", "part": "Orzeczenie"},
+      {"word": "listy", "part": "Dopełnienie"},
+      {"word": "codziennie", "part": "Okolicznik Czasu"}
+    ]
+  },
+  {
+    "id": 30,
+    "sentence": "Kucharz gotuje zupę w dużym garnku.",
+    "level": 3,
+    "tokens": [
+      {"word": "Kucharz", "part": "Podmiot"},
+      {"word": "gotuje", "part": "Orzeczenie"},
+      {"word": "zupę", "part": "Dopełnienie"},
+      {"word": "w dużym garnku", "part": "Okolicznik Miejsca"}
     ]
   }
 ] 

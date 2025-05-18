@@ -43,10 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Parts of Speech Available for Dragging ---
     // These should ideally match the parts used in sentences_pl.json
     const availablePartsOfSpeech = [
-        "Podmiot", "Orzeczenie", "Przydawka", 
+        "Podmiot", "Orzeczenie", "Przydawka", "Dopełnienie", "Okolicznik",
         "Okolicznik Miejsca", "Okolicznik Czasu", 
         "Okolicznik Sposobu", "Okolicznik Celu", "Okolicznik Przyczyny"
-        // "Dopełnienie" // Add if used in your sentences
     ];
 
     function updatePlayerStatsUI() {
@@ -298,13 +297,14 @@ document.addEventListener('DOMContentLoaded', () => {
             p.textContent = feedbackText;
 
             if (slotElement) {
-                slotElement.classList.remove('assigned'); // Remove general assigned class
-                 // Update text to show only the original word during feedback phase, or keep assigned one.
-                // slotElement.textContent = currentSentenceData.tokens[result.tokenIndex].word;
+                slotElement.classList.remove('assigned'); 
 
                 if (result.isCorrect) {
                     p.classList.add('correct');
                     slotElement.classList.add('correct-drop');
+                } else if (result.isPartiallyCorrect) {
+                    p.classList.add('partial-correct'); // New class for text
+                    slotElement.classList.add('partial-correct-drop'); // New class for slot
                 } else {
                     p.classList.add('incorrect');
                     slotElement.classList.add('incorrect-drop');

@@ -34,7 +34,7 @@ Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele z
 
 ### 6.1 Rdzeń rozgrywki
 
-* Wyświetlanie zdania i etykiet części zdania (podmiot, orzeczenie, przydawka, okolicznik miejsca/czasu/sposobu/celu/przyczyny).
+* Wyświetlanie zdania i etykiet części zdania (podmiot, orzeczenie, przydawka, dopełnienie, okolicznik miejsca/czasu/sposobu/celu/przyczyny).
 * Przeciąganie etykiet na odpowiednie słowa lub grupy wyrazów.
 * System punktów za poprawne odpowiedzi, odejmowanie punktów za błędy.
 * Pasek postępu rundy.
