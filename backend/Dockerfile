@@ -1,5 +1,8 @@
 # Use an official Node.js runtime as a parent image
-FROM node:20-alpine
+FROM node:23.11.1-alpine
+
+# Update Alpine packages to mitigate vulnerabilities
+RUN apk update && apk upgrade --no-cache
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
