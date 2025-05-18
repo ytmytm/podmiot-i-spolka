@@ -376,6 +376,13 @@ button#next-sentence-button:hover {
     border-left: 5px solid darkred;
 }
 
+.time-taken-feedback {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: var(--spacing-small);
+}
+
 footer {
     text-align: center;
     padding-top: var(--spacing-medium);

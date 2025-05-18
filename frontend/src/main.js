@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSentenceBoardElement = null;
     let totalGameScore = 0;
     let gameInProgress = false;
+    let sentenceLoadTime = null; // For timing sentence completion
 
     // --- Parts of Speech Available for Dragging ---
     // These should ideally match the parts used in sentences_pl.json
@@ -186,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsArea.style.display = 'none';
         feedbackContainer.innerHTML = '';
         scoreDisplay.textContent = '';
+        sentenceLoadTime = Date.now(); // Start timer for the sentence
 
         // Clear previous sentence board
         const existingBoard = sentenceDisplayContainer.querySelector('.sentence-board');
@@ -261,10 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 actual: r.correctAnswer, // This is the actual part of speech of the word
                 isCorrect: r.isCorrect,
                 partOfSpeech: r.correctAnswer // For "Mistrz Podmiotu", criteria looks for actual POS
-            }))
-            // timeTakenSeconds: undefined // Could be added if a timer is implemented
+            })),
+            timeTakenSeconds: sentenceLoadTime ? (Date.now() - sentenceLoadTime) / 1000 : undefined
         };
-        const newlyAwardedBadges = checkAndAwardBadges(evaluationDetails);
+        const newlyAwardedBadges = checkAndAwardBadges(evaluationDetails, gamificationUpdate.level);
         updatePlayerBadgesUI(); // Update the static display of badges
 
         if (newlyAwardedBadges && newlyAwardedBadges.length > 0) {
@@ -279,6 +281,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         scoreDisplay.textContent = `Wynik za to zdanie: ${scoreResult.totalScore} pkt. Łączny wynik: ${totalGameScore}`;
         feedbackContainer.innerHTML = ''; // Clear previous feedback
+
+        // Display time taken for the sentence
+        if (evaluationDetails.timeTakenSeconds !== undefined) {
+            const timeP = document.createElement('p');
+            timeP.className = 'time-taken-feedback';
+            timeP.textContent = `Czas rozwiązania: ${evaluationDetails.timeTakenSeconds.toFixed(1)} sekund.`;
+            feedbackContainer.appendChild(timeP);
+        }
 
         scoreResult.results.forEach(result => {
             const p = document.createElement('p');

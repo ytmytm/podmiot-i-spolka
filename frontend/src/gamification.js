@@ -22,6 +22,78 @@ export const BADGES = {
         description: 'Rozwiąż 3 zdania z rzędu bezbłędnie.',
         icon: 'fas fa-star',
         criteria: { type: 'perfectSentencesStreak', count: 3 }
+    },
+    PERFECT_STREAK_5: {
+        id: 'PERFECT_STREAK_5',
+        name: 'Perfekcyjna Seria (5)',
+        description: 'Rozwiąż 5 zdań z rzędu bezbłędnie.',
+        icon: 'fas fa-medal',
+        criteria: { type: 'perfectSentencesStreak', count: 5 }
+    },
+    QUICK_LEARNER: {
+        id: 'QUICK_LEARNER',
+        name: 'Szybki Uczeń',
+        description: 'Poprawnie rozwiąż swoje pierwsze zdanie.',
+        icon: 'fas fa-graduation-cap',
+        criteria: { type: 'firstCorrectSentence' }
+    },
+    VOCAB_VIRTUOSO: {
+        id: 'VOCAB_VIRTUOSO',
+        name: 'Mistrz Słownictwa',
+        description: 'Poprawnie oznacz 20 dowolnych części zdania.',
+        icon: 'fas fa-book-open',
+        criteria: { type: 'totalCorrectParts', count: 20 }
+    },
+    GRAMMAR_GURU: {
+        id: 'GRAMMAR_GURU',
+        name: 'Guru Gramatyki',
+        description: 'Osiągnij Poziom 5.',
+        icon: 'fas fa-brain',
+        criteria: { type: 'reachLevel', level: 5 }
+    },
+    // Humorous Badges
+    CLUMSY_CLICKER: {
+        id: 'CLUMSY_CLICKER',
+        name: 'Niezdarny Klikacz',
+        description: 'Popełnij co najmniej 3 błędy w jednym zdaniu. Zdarza się najlepszym!',
+        icon: 'fas fa-hand-sparkles', // More fun than fa-bomb
+        criteria: { type: 'mistakesInSentence', count: 3 }
+    },
+    PARTICIPATION_AWARD: {
+        id: 'PARTICIPATION_AWARD',
+        name: 'Nagroda za Udział',
+        description: 'Ukończono pierwsze zdanie! Każda podróż zaczyna się od pierwszego kroku.',
+        icon: 'fas fa-award',
+        criteria: { type: 'firstSentenceCompleted' }
+    },
+    SPEEDY_GUESSER: {
+        id: 'SPEEDY_GUESSER',
+        name: 'Szybki Strzelec',
+        description: 'Sprawdź odpowiedzi w mniej niż 3 sekundy... i pomyl się co najmniej raz.',
+        icon: 'fas fa-bolt',
+        criteria: { type: 'quickIncorrectCheck', timeLimitSeconds: 3 }
+    },
+    // New time-related badges
+    LIGHTNING_FAST: {
+        id: 'LIGHTNING_FAST',
+        name: 'Błyskawica',
+        description: 'Rozwiąż zdanie perfekcyjnie w mniej niż 10 sekund!',
+        icon: 'fas fa-fighter-jet',
+        criteria: { type: 'perfectAndFast', timeLimitSeconds: 10 }
+    },
+    CONSISTENT_SPEEDSTER: {
+        id: 'CONSISTENT_SPEEDSTER',
+        name: 'Konsekwentny Sprinter',
+        description: 'Ukończ 3 zdania z rzędu, każde w mniej niż 15 sekund!',
+        icon: 'fas fa-tachometer-alt',
+        criteria: { type: 'consecutiveFastSentences', timeLimitSeconds: 15, count: 3 }
+    },
+    MARATHON_RUNNER_5MIN: {
+        id: 'MARATHON_RUNNER_5MIN',
+        name: 'Maratończyk (5 min)',
+        description: 'Spędź w grze łącznie 5 minut. Dobra rozgrzewka!',
+        icon: 'fas fa-running',
+        criteria: { type: 'totalPlayTime', totalSeconds: 300 }
     }
 };
 
@@ -78,8 +150,6 @@ export function addXP(points) {
         currentXP = 0; // XP shouldn't go below 0
     }
 
-    // Check for level up/down (though typically only up)
-    // Math.floor handles cases where multiple levels might be gained at once.
     const newCalculatedLevel = Math.floor(currentXP / XP_PER_LEVEL) + 1;
     
     let leveledUp = false;
@@ -170,7 +240,12 @@ function awardBadge(badgeId) {
  */
 function getBadgeProgress(criterionKey) {
     const item = localStorage.getItem(`${BADGE_PROGRESS_KEY_PREFIX}${criterionKey}`);
-    return item ? JSON.parse(item) : 0; // Default to 0 for counts
+    try {
+        return item ? JSON.parse(item) : 0; // Default to 0 for counts
+    } catch (e) {
+        console.warn(`Could not parse badge progress for ${criterionKey}, defaulting to 0.`);
+        return 0;
+    }
 }
 
 /**
@@ -261,69 +336,185 @@ export function testGamification() {
  *                                       partsOfSpeechFeedback: [ { word: string, attempted: string, actual: string, isCorrect: boolean, partOfSpeech: string } ],
  *                                       timeTakenSeconds: number (optional)
  *                                    }
+ * @param {number} currentLevelAfterXP - The player's current level after XP from this round is applied.
  * @returns {Array} An array of newly awarded badge definitions.
  */
-export function checkAndAwardBadges(evaluationDetails) {
-    if (!evaluationDetails) return;
+export function checkAndAwardBadges(evaluationDetails, currentLevelAfterXP) {
+    if (!evaluationDetails) return [];
     const newlyAwardedBadges = [];
+    const earnedBadges = getEarnedBadges();
 
-    const earnedBadges = getEarnedBadges(); // Keep this for checking if already earned inside loops
-
-    // --- Check for SUBJECT_MASTER badge ---
-    const subjectMasterBadge = BADGES.SUBJECT_MASTER;
-    if (subjectMasterBadge && !earnedBadges[subjectMasterBadge.id]) {
-        let consecutiveCorrectSubjects = getBadgeProgress('consecutive_podmiot_correct');
-        
-        let subjectAttemptedInThisRound = false;
-        let subjectCorrectInThisRound = true; // Assume correct unless proven otherwise or not attempted
-
-        if (evaluationDetails.partsOfSpeechFeedback) {
-            evaluationDetails.partsOfSpeechFeedback.forEach(feedback => {
-                if (feedback.partOfSpeech === subjectMasterBadge.criteria.partOfSpeech) { // 'podmiot'
-                    subjectAttemptedInThisRound = true;
-                    if (feedback.isCorrect) {
-                        // This specific 'podmiot' was correct
-                    } else {
-                        subjectCorrectInThisRound = false; // Any incorrect 'podmiot' in the sentence breaks the streak for this round
-                    }
-                }
-            });
-        }
-        
-        if (subjectAttemptedInThisRound && subjectCorrectInThisRound) {
-            consecutiveCorrectSubjects++;
-        } else if (subjectAttemptedInThisRound && !subjectCorrectInThisRound) {
-            // If a subject was attempted and was incorrect, reset streak
-            consecutiveCorrectSubjects = 0;
-        }
-        // If no subject was attempted in this round, the streak neither increments nor resets. It holds.
-        // Or, one might decide that not attempting a subject when present also breaks a "consecutive correct" streak.
-        // For now, we only increment on correct, reset on incorrect.
-
-        saveBadgeProgress('consecutive_podmiot_correct', consecutiveCorrectSubjects);
-
-        if (consecutiveCorrectSubjects >= subjectMasterBadge.criteria.count) {
-            const awardedBadgeDef = awardBadge(subjectMasterBadge.id);
-            if (awardedBadgeDef) newlyAwardedBadges.push(awardedBadgeDef);
-        }
-    }
-
-    // --- Check for PERFECT_STREAK_3 badge ---
-    const perfectStreakBadge = BADGES.PERFECT_STREAK_3;
-    if (perfectStreakBadge && !earnedBadges[perfectStreakBadge.id] && evaluationDetails.isPerfectSentence !== undefined) {
+    // --- Update shared progress counters first ---
+    // Perfect sentence streak
+    if (evaluationDetails.isPerfectSentence !== undefined) {
         let perfectSentenceStreak = getBadgeProgress('perfect_sentence_streak');
         if (evaluationDetails.isPerfectSentence) {
             perfectSentenceStreak++;
         } else {
-            perfectSentenceStreak = 0; // Reset streak on any imperfect sentence
+            perfectSentenceStreak = 0;
         }
         saveBadgeProgress('perfect_sentence_streak', perfectSentenceStreak);
-        if (perfectSentenceStreak >= perfectStreakBadge.criteria.count) {
-            const awardedBadgeDef = awardBadge(perfectStreakBadge.id);
-            if (awardedBadgeDef) newlyAwardedBadges.push(awardedBadgeDef);
+    }
+
+    // Total correct parts
+    let totalCorrectParts = getBadgeProgress('total_correct_parts');
+    const correctInThisRound = evaluationDetails.partsOfSpeechFeedback.filter(f => f.isCorrect).length;
+    totalCorrectParts += correctInThisRound;
+    saveBadgeProgress('total_correct_parts', totalCorrectParts);
+    
+    // Total sentences completed (for participation award)
+    let sentencesCompleted = getBadgeProgress('sentences_completed_count');
+    sentencesCompleted++;
+    saveBadgeProgress('sentences_completed_count', sentencesCompleted);
+
+    // Total play time (for Marathon Runner)
+    if (evaluationDetails.timeTakenSeconds !== undefined) {
+        let totalPlayTime = getBadgeProgress('total_play_time_seconds');
+        totalPlayTime += evaluationDetails.timeTakenSeconds;
+        saveBadgeProgress('total_play_time_seconds', totalPlayTime);
+    }
+
+    // Consecutive fast sentences (for Consistent Speedster)
+    if (evaluationDetails.timeTakenSeconds !== undefined && BADGES.CONSISTENT_SPEEDSTER) { // Check if badge exists
+        let consecutiveFast = getBadgeProgress('consecutive_fast_sentences');
+        if (evaluationDetails.timeTakenSeconds < BADGES.CONSISTENT_SPEEDSTER.criteria.timeLimitSeconds) {
+            consecutiveFast++;
+        } else {
+            consecutiveFast = 0;
+        }
+        saveBadgeProgress('consecutive_fast_sentences', consecutiveFast);
+    }
+
+    // --- Check Badges ---
+
+    // SUBJECT_MASTER
+    const subjectMasterBadge = BADGES.SUBJECT_MASTER;
+    if (subjectMasterBadge && !earnedBadges[subjectMasterBadge.id]) {
+        let consecutiveCorrectSubjects = getBadgeProgress('consecutive_podmiot_correct');
+        let subjectAttemptedInThisRound = false;
+        let subjectCorrectInThisRound = true;
+        if (evaluationDetails.partsOfSpeechFeedback) {
+            evaluationDetails.partsOfSpeechFeedback.forEach(feedback => {
+                if (feedback.partOfSpeech === subjectMasterBadge.criteria.partOfSpeech) { 
+                    subjectAttemptedInThisRound = true;
+                    if (!feedback.isCorrect) {
+                        subjectCorrectInThisRound = false;
+                    }
+                }
+            });
+        }
+        if (subjectAttemptedInThisRound && subjectCorrectInThisRound) {
+            consecutiveCorrectSubjects++;
+        } else if (subjectAttemptedInThisRound && !subjectCorrectInThisRound) {
+            consecutiveCorrectSubjects = 0;
+        }
+        saveBadgeProgress('consecutive_podmiot_correct', consecutiveCorrectSubjects);
+        if (consecutiveCorrectSubjects >= subjectMasterBadge.criteria.count) {
+            const awarded = awardBadge(subjectMasterBadge.id);
+            if (awarded) newlyAwardedBadges.push(awarded);
+        }
+    }
+
+    // PERFECT_STREAK_3 and PERFECT_STREAK_5
+    [BADGES.PERFECT_STREAK_3, BADGES.PERFECT_STREAK_5].forEach(streakBadge => {
+        if (streakBadge && !earnedBadges[streakBadge.id]) {
+            if (getBadgeProgress('perfect_sentence_streak') >= streakBadge.criteria.count) {
+                const awarded = awardBadge(streakBadge.id);
+                if (awarded) newlyAwardedBadges.push(awarded);
+            }
+        }
+    });
+
+    // QUICK_LEARNER
+    const quickLearnerBadge = BADGES.QUICK_LEARNER;
+    if (quickLearnerBadge && !earnedBadges[quickLearnerBadge.id] && 
+        evaluationDetails.isPerfectSentence && 
+        !getBadgeProgress('first_correct_sentence_awarded')) {
+        const awarded = awardBadge(quickLearnerBadge.id);
+        if (awarded) {
+            newlyAwardedBadges.push(awarded);
+            saveBadgeProgress('first_correct_sentence_awarded', true);
+        }
+    }
+
+    // VOCAB_VIRTUOSO
+    const vocabBadge = BADGES.VOCAB_VIRTUOSO;
+    if (vocabBadge && !earnedBadges[vocabBadge.id]) {
+        if (getBadgeProgress('total_correct_parts') >= vocabBadge.criteria.count) {
+            const awarded = awardBadge(vocabBadge.id);
+            if (awarded) newlyAwardedBadges.push(awarded);
+        }
+    }
+
+    // GRAMMAR_GURU
+    const guruBadge = BADGES.GRAMMAR_GURU;
+    if (guruBadge && !earnedBadges[guruBadge.id] && currentLevelAfterXP >= guruBadge.criteria.level) {
+        const awarded = awardBadge(guruBadge.id);
+        if (awarded) newlyAwardedBadges.push(awarded);
+    }
+
+    // CLUMSY_CLICKER
+    const clumsyBadge = BADGES.CLUMSY_CLICKER;
+    if (clumsyBadge && !earnedBadges[clumsyBadge.id]) {
+        const mistakesInThisRound = evaluationDetails.partsOfSpeechFeedback.filter(f => !f.isCorrect && f.attempted !== null).length;
+        if (mistakesInThisRound >= clumsyBadge.criteria.count) {
+            const awarded = awardBadge(clumsyBadge.id);
+            if (awarded) newlyAwardedBadges.push(awarded);
+        }
+    }
+
+    // PARTICIPATION_AWARD
+    const participationBadge = BADGES.PARTICIPATION_AWARD;
+    if (participationBadge && !earnedBadges[participationBadge.id] && 
+        getBadgeProgress('sentences_completed_count') >= 1 && 
+        !getBadgeProgress('first_sentence_completed_awarded')) {
+        const awarded = awardBadge(participationBadge.id);
+        if (awarded) {
+            newlyAwardedBadges.push(awarded);
+            saveBadgeProgress('first_sentence_completed_awarded', true);
+        }
+    }
+
+    // SPEEDY_GUESSER
+    const speedyGuesserBadge = BADGES.SPEEDY_GUESSER;
+    if (speedyGuesserBadge && !earnedBadges[speedyGuesserBadge.id] && 
+        evaluationDetails.timeTakenSeconds !== undefined && 
+        evaluationDetails.timeTakenSeconds < speedyGuesserBadge.criteria.timeLimitSeconds) {
+        
+        const hasAtLeastOneMistake = evaluationDetails.partsOfSpeechFeedback.some(f => !f.isCorrect && f.attempted !== null);
+        if (hasAtLeastOneMistake) {
+            const awarded = awardBadge(speedyGuesserBadge.id);
+            if (awarded) newlyAwardedBadges.push(awarded);
+        }
+    }
+
+    // LIGHTNING_FAST
+    const lightningFastBadge = BADGES.LIGHTNING_FAST;
+    if (lightningFastBadge && !earnedBadges[lightningFastBadge.id] &&
+        evaluationDetails.isPerfectSentence &&
+        evaluationDetails.timeTakenSeconds !== undefined &&
+        evaluationDetails.timeTakenSeconds < lightningFastBadge.criteria.timeLimitSeconds) {
+        const awarded = awardBadge(lightningFastBadge.id);
+        if (awarded) newlyAwardedBadges.push(awarded);
+    }
+
+    // CONSISTENT_SPEEDSTER
+    const consistentSpeedsterBadge = BADGES.CONSISTENT_SPEEDSTER;
+    if (consistentSpeedsterBadge && !earnedBadges[consistentSpeedsterBadge.id]) {
+        if (getBadgeProgress('consecutive_fast_sentences') >= consistentSpeedsterBadge.criteria.count) {
+            const awarded = awardBadge(consistentSpeedsterBadge.id);
+            if (awarded) newlyAwardedBadges.push(awarded);
+        }
+    }
+
+    // MARATHON_RUNNER_5MIN
+    const marathonBadge = BADGES.MARATHON_RUNNER_5MIN;
+    if (marathonBadge && !earnedBadges[marathonBadge.id]) {
+        if (getBadgeProgress('total_play_time_seconds') >= marathonBadge.criteria.totalSeconds) {
+            const awarded = awardBadge(marathonBadge.id);
+            if (awarded) newlyAwardedBadges.push(awarded);
         }
     }
     
-    // Add checks for other badges here
     return newlyAwardedBadges;
 } 
