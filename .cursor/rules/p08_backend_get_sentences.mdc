@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-08 Backend - Get Sentences
+
+*   **Output:** `backend/src/routes/sentences.js`.
+*   **Functionality:** GET `/sentences/random` endpoint serving sentences from `data/sentences_pl.json`.
+*   **Priority:** Low (Post-MVP).

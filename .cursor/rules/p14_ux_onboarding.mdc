@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+### P-14 UX - Onboarding
+
+*   **Output:** `onboarding.json` or similar spec.
+*   **Content:** Propose onboarding flow and tooltips.
+*   **Input:** Mockups.

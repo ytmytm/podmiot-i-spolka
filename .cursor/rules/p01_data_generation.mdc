@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-01 Data Generation
+
+*   **Output:** `data/sentences_pl.json`.
+*   **Content:** 100 simple Polish sentences with parts of speech clearly marked (subject, predicate, adjective, adverb of place/time/manner/purpose/cause).
+*   **Input:** Grammatical guidelines (to be provided or inferred from PRD).

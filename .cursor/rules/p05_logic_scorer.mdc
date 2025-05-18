@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-05 Logic - Scorer
+
+*   **Output:** `gameEngine.js` (or a dedicated `scorer.js`) and tests.
+*   **Functionality:** Evaluate the correctness of matched labels to words.
+*   **Input:** Grammatical rules for parts of speech.

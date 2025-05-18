@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-04 Frontend - Drag & Drop
+
+*   **Output:** `frontend/src/drag.js` (or integrated into components).
+*   **Functionality:** Implement drag and drop for labels (parts of speech) onto words. Use Native HTML5 Drag and Drop API or `interact.js` as per `DESIGN.md`.
+*   **Input:** `drag_spec.md` (to be defined).

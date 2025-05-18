@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-12 Testing - E2E
+
+*   **Output:** E2E tests (e.g., `e2e.spec.ts`).
+*   **Functionality:** Write Playwright tests for the "Happy Path" user flow.
+*   **Input:** MVP UI.

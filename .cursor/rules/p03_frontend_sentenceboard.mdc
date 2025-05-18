@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-03 Frontend - SentenceBoard
+
+*   **Output:** `frontend/src/components/SentenceBoard.js` and associated tests.
+*   **Functionality:** Display a sentence, tokenizing it into words. Each word becomes a `WordSlot`.
+*   **Input:** `SentenceBoard.spec` (to be defined if not existing).

@@ -1,0 +1,12 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Dockerization Guidelines
+
+*   **Frontend:** `node:20-alpine` for build stage, then static `nginx`.
+*   **Backend:** `node:20-alpine`.
+*   **DB (Post-MVP):** `mongo:7`.
+*   **Proxy (Post-MVP):** `nginx:1.25`.
+*   Ensure `docker-compose.yml` orchestrates these services correctly.

@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-15 Analytics - Tracking Plan
+
+*   **Output:** `analytics_plan.md`.
+*   **Content:** Propose event tracking plan for GA4 based on KPIs.
+*   **Input:** List of KPIs.

@@ -1,0 +1,9 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-02 UI Design
+
+*   **Output:** `ui_theme.json` (or directly applied styles).
+*   **Content:** Color palette (#8EC5FC, #E0C3FC, #FFF9C4) and fonts (Poppins, 18px+) suitable for 10-year-olds, ensuring WCAG 2.1 AA contrast.

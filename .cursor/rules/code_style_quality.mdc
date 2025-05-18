@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Code Style and Quality
+
+*   Write clean, readable, and maintainable code.
+*   Use ESLint/Prettier (if configured) for consistent formatting.
+*   Comments should explain non-obvious logic.

@@ -1,0 +1,11 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Non-Functional Requirements
+
+*   **Accessibility:** WCAG 2.1 AA (contrast).
+*   **Performance:** First screen load ≤ 2s on 3G Fast.
+*   **Security:** HTTPS, no sensitive data storage for MVP.
+*   **Scalability:** Dockerized application.

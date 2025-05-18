@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-07 Gamification
+
+*   **Output:** `frontend/src/gamification.js`.
+*   **Functionality:** Implement scoring (+10 correct, +3 partial, -2 incorrect), levels (every 100 XP), and badges (e.g., "Mistrz Podmiotu").
+*   **Input:** KPIs from `PRD.md`.

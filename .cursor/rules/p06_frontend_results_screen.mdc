@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-06 Frontend - Results Screen
+
+*   **Output:** `frontend/src/components/ResultView.js`.
+*   **Functionality:** Display results screen and a leaderboard (using localStorage for MVP).
+*   **Input:** Mockup/UI design.

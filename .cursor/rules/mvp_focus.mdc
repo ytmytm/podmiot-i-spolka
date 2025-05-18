@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## MVP Focus
+
+*   Prioritize tasks marked as "wysoki" in `PLAN.md` for the MVP.
+*   MVP features include: Drag & Drop gameplay, 100 offline sentences, points/levels, Polish UI.
+*   Post-MVP: Teacher panel, login, cloud save, dynamic sentence generation, badges, class ranking, English localization.

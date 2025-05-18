@@ -1,0 +1,9 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-13 Docs - README
+
+*   **Output:** Updates to `README.md`.
+*   **Content:** Instructions on how to run the project.

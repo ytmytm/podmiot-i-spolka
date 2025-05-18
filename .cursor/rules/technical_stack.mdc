@@ -1,0 +1,12 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Technical Stack Adherence
+
+*   **Frontend:** HTML5, CSS3 (TailwindCSS), JavaScript (ES6+), Vite.
+*   **Drag & Drop:** Native HTML5 API or `interact.js`.
+*   **Backend (Post-MVP):** Node.js 20, Express 4, MongoDB, Redis.
+*   **Testing:** Jest, @testing-library/dom, Playwright.
+*   **Environment:** Node >= 20, ES2022.

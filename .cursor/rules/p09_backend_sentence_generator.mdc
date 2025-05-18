@@ -1,0 +1,11 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-09 Backend - Sentence Generator
+
+*   **Output:** `backend/src/services/generator.js` (or `llm.js`).
+*   **Functionality:** Generate new sentences using GPT-4o (or specified LLM).
+*   **Input:** Prompt template.
+*   **Priority:** Low (Post-MVP).

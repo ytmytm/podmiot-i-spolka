@@ -1,0 +1,13 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## General Principles
+
+*   **Adherence to PRD and DESIGN:** All development must strictly follow the specifications outlined in `PRD.md` and `DESIGN.md`.
+*   **Task-Specific Focus:** Each agent should focus on the specific task assigned in `PLAN.md`.
+*   **Modularity:** Code should be modular and well-documented to facilitate parallel work and future maintenance.
+*   **Testing:** All functional code must be accompanied by unit tests as specified (e.g., Jest, @testing-library/dom, Playwright).
+*   **Iterative Development:** Deliver tasks in manageable chunks, ideally as pull requests.
+*   **Communication:** If a task dependency is blocked or clarification is needed, raise it immediately.

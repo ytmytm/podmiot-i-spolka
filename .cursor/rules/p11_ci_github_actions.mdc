@@ -1,0 +1,9 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-11 CI - GitHub Actions
+
+*   **Output:** `.github/workflows/ci.yml`.
+*   **Functionality:** Setup GitHub Actions for automated testing and building.

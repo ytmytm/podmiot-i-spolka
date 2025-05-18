@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+### P-10 DevOps - Backend Dockerfile
+
+*   **Output:** `backend/Dockerfile`.
+*   **Content:** Dockerfile for the Node.js backend (`node:20-alpine`).
+*   **Input:** `backend/package.json`.
