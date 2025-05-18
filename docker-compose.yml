@@ -8,6 +8,7 @@ services:
     container_name: czesci-zdania-frontend
     ports:
       - "8080:80" # Host:Container (frontend runs on port 80 in the Nginx container)
+    # entrypoint: ["nginx", "-g", "daemon off;"]
     # depends_on:
     #   - backend # Uncomment if frontend needs backend to be up
 
