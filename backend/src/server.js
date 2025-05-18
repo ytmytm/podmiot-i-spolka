@@ -1,23 +1,39 @@
-const http = require('http');
+const express = require('express');
+const http = require('http'); // Still used for http.createServer if not using app.listen directly
+const path = require('path');
+const sentencesRouter = require('./routes/sentences'); // Import the sentences router
 
+const app = express();
 const port = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
+// Middleware for logging requests (optional, but good for debugging)
+app.use((req, res, next) => {
     console.log(`Request received: ${req.method} ${req.url}`);
-    if (req.url === '/' && req.method === 'GET') {
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ message: 'Backend is running!' }));
-    } else if (req.url === '/sentences/random' && req.method === 'GET') {
-        // Placeholder for P-08: Endpoint GET /sentences/random
-        // TODO: Implement actual logic to read from sentences_pl.json
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ sentence: 'To jest przykładowe zdanie z backendu.', id: 100 }));
-    } else {
-        res.writeHead(404, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'Not Found' }));
-    }
+    next();
 });
 
+// Mount the sentences router under the /sentences path
+app.use('/sentences', sentencesRouter);
+
+// Basic root endpoint
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Backend is running with Express!' });
+});
+
+// Fallback for 404 Not Found
+app.use((req, res, next) => {
+    res.status(404).json({ error: 'Not Found' });
+});
+
+// Error handling middleware (optional, basic example)
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Something went wrong!', details: err.message });
+});
+
+// Create HTTP server with the Express app
+const server = http.createServer(app);
+
 server.listen(port, () => {
-    console.log(`Backend server listening on port ${port}`);
+    console.log(`Backend server with Express listening on port ${port}`);
 }); 

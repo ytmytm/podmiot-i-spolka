@@ -13,10 +13,9 @@ services:
 
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile # Assuming Dockerfile is in backend/
+      context: .
+      dockerfile: backend/Dockerfile
     container_name: czesci-zdania-backend
-    image: czesci-zdania-backend-img 
     ports:
       - "3000:3000" # Assuming backend runs on port 3000
     environment:

@@ -57,6 +57,51 @@ header {
 header h1 {
     color: var(--color-primary);
     margin: 0;
+    margin-bottom: var(--spacing-small); /* Add some space below title */
+}
+
+.player-stats {
+    font-size: 0.85em;
+    color: #555;
+    text-align: center; /* Center stats text */
+    margin-bottom: var(--spacing-medium);
+}
+
+.player-stats span {
+    margin: 0 var(--spacing-small);
+}
+
+.xp-bar-container {
+    width: 150px; /* Or a percentage */
+    height: 15px;
+    background-color: #e0e0e0;
+    border-radius: var(--border-radius-default);
+    margin: var(--spacing-small) auto; /* Center the bar */
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+#xp-bar-fill {
+    height: 100%;
+    width: 0%; /* Will be set by JS */
+    background-color: var(--color-secondary); /* Or another distinct color */
+    transition: width 0.5s ease-in-out;
+    border-radius: var(--border-radius-default);
+}
+
+.level-up-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius-default);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-align: center;
+    font-weight: bold;
 }
 
 #game-area {

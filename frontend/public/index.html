@@ -11,9 +11,20 @@
     <div class="app-container">
         <header>
             <h1>Analiza Zdania</h1>
+            <div class="player-stats">
+                <span>Poziom: <span id="player-level">1</span></span>
+                <span>XP: <span id="player-xp">0</span></span>
+                <span>Do nast. poziomu: <span id="xp-to-next-level">100</span> XP</span>
+                <div class="xp-bar-container">
+                    <div id="xp-bar-fill"></div>
+                </div>
+            </div>
         </header>
 
         <main>
+            <div id="level-up-notification" class="level-up-notification" style="display: none;">
+                Gratulacje! Osiągnięto nowy poziom: <span id="new-level-achieved"></span>!
+            </div>
             <section id="game-area">
                 <div id="sentence-display-container">
                     <p class="instruction">Przeciągnij etykietę na odpowiednie słowo lub grupę słów.</p>
