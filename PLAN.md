@@ -23,7 +23,7 @@ Dokument rozbija projekt na małe jednostki pracy możliwe do wykonania równole
 | P‑03 | **Frontend**     | Zaimplementuj komponent *SentenceBoard* z tokenizacją zdania | `SentenceBoard.spec`   | `SentenceBoard.js` + testy | ZROBIONE  |
 | P‑04 | **Frontend**     | Zaimplementuj logikę drag & drop dla etykiet                 | `drag_spec.md`         | `drag.js`                  | ZROBIONE  |
 | P‑05 | **Logic**        | Stwórz funkcję scorer() oceniającą poprawność dopasowań      | Reguły gramatyczne     | `scorer.js` + testy        | ZROBIONE  |
-| P‑06 | **Frontend**     | Ekran wyników + tabela rankingowa (localStorage)             | Makieta                | `ResultView.js`            | średni    |
+| P‑06 | **Frontend**     | Ekran wyników + tabela rankingowa (localStorage)             | Makieta                | `ResultView.js`            | ZROBIONE  |
 | P‑07 | **Gamification** | System punktacji, poziomy, odznaki                           | KPI                    | `gamification.js`          | średni    |
 | P‑08 | **Backend**      | Endpoint GET `/sentences/random`                             | `sentences_pl.json`    | `sentences.js`             | ZROBIONE  |
 | P‑09 | **Backend**      | Generator nowych zdań z GPT‑4o                               | Prompt template        | `generator.js`             | średni    |

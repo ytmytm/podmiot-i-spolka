@@ -239,17 +239,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             partsTrayContainer.appendChild(card);
         });
         
-        // Add or update the hint text
+        // Make sure the hint is visible
         if (clickToCorrectHint) {
-            clickToCorrectHint.textContent = "Pomyliłeś się? Kliknij na słowie, aby usunąć odpowiedź.";
-            clickToCorrectHint.style.display = 'block'; // Make sure it's visible
-        } else {
-            // Fallback if element wasn't in HTML, create and append it (less ideal)
-            const hintElement = document.createElement('p');
-            hintElement.id = 'click-to-correct-hint';
-            hintElement.className = 'click-hint';
-            hintElement.textContent = "Pomyliłeś się? Kliknij na słowie, aby usunąć odpowiedź.";
-            partsTrayContainer.insertAdjacentElement('afterend', hintElement);
+            clickToCorrectHint.style.display = 'block';
         }
 
         initializeDragAndDrop('.drag-card', '.word-slot', handleDrop);
