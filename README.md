@@ -34,7 +34,7 @@ Gra polega na przeciąganiu etykiet z częściami zdania na odpowiednie słowa. 
 - Docker
 - Docker Compose
 
-### Kroki instalacji
+### Instalacja lokalna (Docker)
 
 1. Sklonuj repozytorium:
    ```bash
