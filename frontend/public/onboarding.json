@@ -129,6 +129,13 @@
       "dynamic": true
     },
     {
+      "id": "tooltip_drag_card_okolicznik_miary",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Miary']",
+      "text": "Okolicznik Miary: Określa ILOŚĆ lub WIELKOŚĆ czegoś. Pytania: ile? jak bardzo? jak dużo? Np. 'Przebiegł (ile?) pięć kilometrów'.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
       "id": "tooltip_drag_card_okolicznik_warunku",
       "targetElement": ".drag-card[data-part-of-speech='Okolicznik Warunku']",
       "text": "Okolicznik Warunku: Mówi, POD JAKIM WARUNKIEM coś się stanie. Pytania: pod jakim warunkiem? w razie czego? Np. '(Pod jakim warunkiem?) Jeśli będzie ładna pogoda, pójdziemy na spacer'.",
@@ -138,13 +145,27 @@
     {
       "id": "tooltip_drag_card_okolicznik_przyzwolenia",
       "targetElement": ".drag-card[data-part-of-speech='Okolicznik Przyzwolenia']",
-      "text": "Okolicznik Przyzwolenia: Wskazuje na coś, co mogłoby przeszkodzić, ale nie przeszkodziło. Pytania: mimo co? mimo czego? Np. '(Mimo czego?) Mimo deszczu, wyszli na dwór'.",
+      "text": "Okolicznik Przyzwolenia: Wskazuje na coś, co mogłoby przeszkodzić, ale nie przeszkodziło. Pytania: mimo co? mimo czego? pomimo czego? Np. '(Mimo czego?) Mimo deszczu, wyszli na dwór'.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik_stopnia",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Stopnia']",
+      "text": "Okolicznik Stopnia: Określa NATĘŻENIE lub INTENSYWNOŚĆ czynności. Pytania: w jakim stopniu? jak bardzo? Np. 'Bardzo się starał'.",
+      "position": "bottom",
+      "dynamic": true
+    },
+    {
+      "id": "tooltip_drag_card_okolicznik_narzedzia",
+      "targetElement": ".drag-card[data-part-of-speech='Okolicznik Narzędzia']",
+      "text": "Okolicznik Narzędzia: Określa, ZA POMOCĄ CZEGO wykonywana jest czynność. Pytania: czym? za pomocą czego? Np. 'Pisze (czym?) długopisem'.",
       "position": "bottom",
       "dynamic": true
     },
     {
       "id": "tooltip_drag_card_other",
-      "targetElement": ".drag-card:not([data-part-of-speech='Podmiot']):not([data-part-of-speech='Orzeczenie']):not([data-part-of-speech='Dopełnienie']):not([data-part-of-speech='Przydawka']):not([data-part-of-speech='Okolicznik']):not([data-part-of-speech='Okolicznik Miejsca']):not([data-part-of-speech='Okolicznik Czasu']):not([data-part-of-speech='Okolicznik Sposobu']):not([data-part-of-speech='Okolicznik Celu']):not([data-part-of-speech='Okolicznik Przyczyny']):not([data-part-of-speech='Okolicznik Warunku']):not([data-part-of-speech='Okolicznik Przyzwolenia'])",
+      "targetElement": ".drag-card:not([data-part-of-speech='Podmiot']):not([data-part-of-speech='Orzeczenie']):not([data-part-of-speech='Dopełnienie']):not([data-part-of-speech='Przydawka']):not([data-part-of-speech='Okolicznik']):not([data-part-of-speech='Okolicznik Miejsca']):not([data-part-of-speech='Okolicznik Czasu']):not([data-part-of-speech='Okolicznik Sposobu']):not([data-part-of-speech='Okolicznik Celu']):not([data-part-of-speech='Okolicznik Przyczyny']):not([data-part-of-speech='Okolicznik Miary']):not([data-part-of-speech='Okolicznik Stopnia']):not([data-part-of-speech='Okolicznik Narzędzia'])",
       "text": "To etykieta części zdania. Przeciągnij ją na słowo, które według Ciebie jest tą częścią zdania.",
       "position": "bottom",
       "dynamic": true

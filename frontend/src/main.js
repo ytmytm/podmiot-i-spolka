@@ -63,8 +63,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     // These should ideally match the parts used in sentences_pl.json
     const availablePartsOfSpeech = [
         "Podmiot", "Orzeczenie", "Przydawka", "Dopełnienie", "Okolicznik",
-        "Okolicznik Miejsca", "Okolicznik Czasu", 
-        "Okolicznik Sposobu", "Okolicznik Celu", "Okolicznik Przyczyny"
+        "Okolicznik Miejsca", "Okolicznik Czasu", "Okolicznik Sposobu", 
+        "Okolicznik Celu", "Okolicznik Przyczyny", "Okolicznik Miary",
+        "Okolicznik Warunku", "Okolicznik Przyzwolenia", "Okolicznik Stopnia",
+        "Okolicznik Narzędzia"
     ];
 
     function updatePlayerStatsUI() {

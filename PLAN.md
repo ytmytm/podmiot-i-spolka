@@ -22,6 +22,8 @@ Dokument rozbija projekt na małe jednostki pracy możliwe do wykonania równole
 | P‑14 | **UX**           | Zaproponuj onboarding i tooltipy                             | Makiety                | `onboarding.json`          | ZROBIONE  |
 | P‑15 | **Analytics**    | Zaproponuj plan event tracking (GA4)                         | Lista KPI              | `analytics_plan.md`        | wstrzymane |
 | P‑16 | **PWA**          | Implementacja Service Worker dla trybu offline               | Wymagania PRD          | Service Worker             | ZROBIONE  |
+| P‑17 | **Dane**         | Walidacja zdań pod kątem poprawności gramatycznej i sensowności | `sentences_pl.json`    | Raport walidacji + poprawki| średni    |
+| P‑18 | **Dane**         | Rozszerzenie typów okoliczników (miary, warunku, przyzwolenia, stopnia) | Reguły gramatyczne     | Zaktualizowany `sentences_pl.json` + dokumentacja | ZROBIONE    |
 
 **Legenda priorytetów:** wysoki → wymagane na MVP, średni → beta, niski → v1+, ZROBIONE → zadanie ukończone, wstrzymane → odłożone na później
 

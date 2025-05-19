@@ -54,7 +54,7 @@ export function scorer(sentenceTokens, userAnswers, scoringRules = { correct: 10
     "Okolicznik Miejsca", "Okolicznik Czasu", 
     "Okolicznik Sposobu", "Okolicznik Celu", "Okolicznik Przyczyny",
     "Okolicznik Warunku", "Okolicznik Przyzwolenia", "Okolicznik Narzędzia",
-    "Okolicznik Stopnia i Miary"
+    "Okolicznik Miary", "Okolicznik Stopnia"
   ];
 
   sentenceTokens.forEach((token, index) => {
