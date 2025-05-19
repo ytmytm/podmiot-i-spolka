@@ -8,9 +8,10 @@ services:
     container_name: czesci-zdania-frontend
     ports:
       - "8080:80" # Host:Container (frontend runs on port 80 in the Nginx container)
-    # entrypoint: ["nginx", "-g", "daemon off;"]
-    # depends_on:
-    #   - backend # Uncomment if frontend needs backend to be up
+    depends_on:
+      - backend
+    networks:
+      - app-network
 
   backend:
     build:
@@ -25,6 +26,8 @@ services:
       # - OPENAI_API_KEY=your_api_key_here # Add your OpenAI API key
     volumes:
       - ./backend/src:/usr/src/app/src # Mount src for development
+    networks:
+      - app-network
     # depends_on:
     #   - db # Uncomment when db service is added
     # restart: unless-stopped # Optional: for production
@@ -48,6 +51,10 @@ services:
   #   depends_on:
   #     - frontend
   #     - backend
+
+networks:
+  app-network:
+    driver: bridge
 
 # volumes: # Uncomment when db service is added
 #   mongo_data: 

@@ -147,25 +147,65 @@ document.addEventListener('DOMContentLoaded', async () => {
     // --- Load Data ---
     async function loadGameData() {
         try {
-            const response = await fetch('../data/sentences_pl.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            sentences = await response.json();
-            if (sentences.length > 0) {
-                startGame();
-            } else {
-                sentenceDisplayContainer.innerHTML = '<p>Brak zdań do wyświetlenia.</p>';
-            }
+            // Initialize game state but don't load sentences yet
+            sentences = [];
+            startGame();
+            updatePlayerStatsUI(); // Initial UI update for stats
         } catch (error) {
-            console.error("Nie udało się załadować danych zdań:", error);
-            sentenceDisplayContainer.innerHTML = '<p>Wystąpił błąd podczas ładowania zdań.</p>';
+            console.error("Nie udało się zainicjalizować gry:", error);
+            sentenceDisplayContainer.innerHTML = '<p>Wystąpił błąd podczas inicjalizacji gry.</p>';
         }
-        updatePlayerStatsUI(); // Initial UI update for stats
+    }
+
+    async function loadSentence() {
+        if (!gameInProgress) return;
+
+        try {
+            const currentLevel = getLevel(); // Get current player level from gamification.js
+            const response = await fetch(`/api/sentences/random?level=${currentLevel}`);
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                if (response.status === 404 && errorData.availableLevels) {
+                    // If no sentences for current level, use the highest available level
+                    const highestAvailableLevel = Math.max(...errorData.availableLevels);
+                    const fallbackResponse = await fetch(`/api/sentences/random?level=${highestAvailableLevel}`);
+                    if (!fallbackResponse.ok) throw new Error('Failed to fetch fallback sentence');
+                    currentSentenceData = await fallbackResponse.json();
+                } else {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+            } else {
+                currentSentenceData = await response.json();
+            }
+
+            userAnswers = {}; // Reset answers for the new sentence
+            resultsArea.style.display = 'none';
+            feedbackContainer.innerHTML = '';
+            scoreDisplay.textContent = '';
+            sentenceLoadTime = Date.now(); // Start timer for the sentence
+
+            // Clear previous sentence board
+            const existingBoard = sentenceDisplayContainer.querySelector('.sentence-board');
+            if (existingBoard) {
+                existingBoard.remove();
+            }
+
+            currentSentenceBoardElement = SentenceBoard(currentSentenceData, handleWordSlotClick);
+            sentenceDisplayContainer.appendChild(currentSentenceBoardElement); 
+            
+            // Ensure drag and drop is initialized *after* SentenceBoard creates .word-slot elements
+            initializeDragAndDrop('.drag-card', '.word-slot', handleDrop);
+
+            checkAnswersButton.style.display = 'inline-block';
+            nextSentenceButton.style.display = 'none';
+        } catch (error) {
+            console.error("Nie udało się załadować zdania:", error);
+            sentenceDisplayContainer.innerHTML = '<p>Wystąpił błąd podczas ładowania zdania.</p>';
+        }
     }
 
     function startGame() {
-        currentSentenceIndex = 0;
         totalGameScore = 0;
         gameInProgress = true;
         mainHeader.textContent = 'Analiza Zdania';
@@ -175,7 +215,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const existingResultView = document.querySelector('.result-view-container');
         if (existingResultView) existingResultView.remove();
         updatePlayerStatsUI(); // Update stats display at game start
-        loadSentence(currentSentenceIndex);
+        loadSentence(); // Load first sentence
         renderDragCards();
     }
 
@@ -203,37 +243,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         initializeDragAndDrop('.drag-card', '.word-slot', handleDrop);
         initTooltips(); // Call initTooltips after cards are rendered
-    }
-
-    function loadSentence(index) {
-        if (!gameInProgress) return;
-
-        if (index >= sentences.length) {
-            showGameResults();
-            return;
-        }
-        currentSentenceData = sentences[index];
-        userAnswers = {}; // Reset answers for the new sentence
-        resultsArea.style.display = 'none';
-        feedbackContainer.innerHTML = '';
-        scoreDisplay.textContent = '';
-        sentenceLoadTime = Date.now(); // Start timer for the sentence
-
-        // Clear previous sentence board
-        const existingBoard = sentenceDisplayContainer.querySelector('.sentence-board');
-        if (existingBoard) {
-            existingBoard.remove();
-        }
-
-        currentSentenceBoardElement = SentenceBoard(currentSentenceData, handleWordSlotClick);
-        sentenceDisplayContainer.appendChild(currentSentenceBoardElement); 
-        
-        // Ensure drag and drop is initialized *after* SentenceBoard creates .word-slot elements
-        // and DragCards are present.
-        initializeDragAndDrop('.drag-card', '.word-slot', handleDrop);
-
-        checkAnswersButton.style.display = 'inline-block';
-        nextSentenceButton.style.display = 'none';
     }
 
     // --- Event Handlers ---
@@ -349,8 +358,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     nextSentenceButton.addEventListener('click', () => {
         if (!gameInProgress) return;
-        currentSentenceIndex++;
-        loadSentence(currentSentenceIndex);
+        loadSentence(); // Load next random sentence
     });
 
     // Shared function to reset and start a new game

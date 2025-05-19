@@ -1,8 +1,12 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 
 const router = express.Router();
+
+// Enable CORS for development
+router.use(cors());
 
 // Determine the path to sentences_pl.json
 // Assuming the backend is run from the project root, or paths are adjusted in Docker context.
@@ -43,14 +47,22 @@ loadSentences();
 
 router.get('/random', (req, res) => {
     loadSentences(); // Check for updates before serving
-
-    if (!sentencesCache || sentencesCache.length === 0) {
-        return res.status(500).json({ error: 'No sentences available or error loading sentences.' });
+    const level = parseInt(req.query.level) || 1; // Default to level 1 if not specified
+    
+    // Filter sentences by level
+    const levelSentences = sentencesCache.filter(sentence => sentence.level === level);
+    
+    if (levelSentences.length === 0) {
+        return res.status(404).json({ 
+            error: 'No sentences found for this level',
+            availableLevels: [...new Set(sentencesCache.map(s => s.level))].sort()
+        });
     }
-
-    const randomIndex = Math.floor(Math.random() * sentencesCache.length);
-    const randomSentence = sentencesCache[randomIndex];
-
+    
+    // Pick a random sentence from the filtered list
+    const randomIndex = Math.floor(Math.random() * levelSentences.length);
+    const randomSentence = levelSentences[randomIndex];
+    
     res.json(randomSentence);
 });
 

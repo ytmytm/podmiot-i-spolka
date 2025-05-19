@@ -13,6 +13,9 @@ COPY frontend/public ./public
 COPY frontend/src ./src
 COPY data ./data
 
+# Copy our custom nginx configuration
+COPY frontend/nginx.conf /etc/nginx/nginx.conf
+
 # Expose port 80 (default HTTP port for Nginx)
 EXPOSE 80
 
