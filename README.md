@@ -1,19 +1,86 @@
-## Części zdania
+# Części Zdania - Gra Edukacyjna
 
-W grze wykorzystywane są następujące części zdania:
+Interaktywna gra edukacyjna pomagająca uczniom 5 klasy szkoły podstawowej w nauce rozpoznawania części zdania. Poprzez wciągającą mechanikę drag & drop oraz system punktów i odznak, uczniowie mogą ćwiczyć analizę składniową zdań w języku polskim.
 
-*   **Podmiot (Subject)**: Kto lub co wykonuje czynność.
-*   **Orzeczenie (Predicate)**: Czynność wykonywana przez podmiot.
-*   **Przydawka (Adjective/Adverbial modifier)**: Określenie rzeczownika lub innego przysłówka.
-*   **Dopełnienie (Object)**: Rzeczownik lub zaimek, który jest bezpośrednio lub pośrednio związany z czynnością orzeczenia.
-*   **Okolicznik (Adverbial)**: Określenie czasownika, przymiotnika lub innego przysłówka, wskazujące na okoliczności (miejsce, czas, sposób itp.).
+## O Grze
+
+Gra polega na przeciąganiu etykiet z częściami zdania na odpowiednie słowa. Za każde poprawne przyporządkowanie gracz otrzymuje punkty XP, które pozwalają mu awansować na wyższe poziomy. Dodatkowo, za szczególne osiągnięcia przyznawane są specjalne odznaki.
+
+### System Punktacji
+
+- +10 XP za poprawne przyporządkowanie
+- +3 XP za częściowo poprawne przyporządkowanie
+- -2 XP za błędne przyporządkowanie
+- Awans na kolejny poziom co 100 XP
+- Specjalne odznaki za osiągnięcia (np. "Mistrz Podmiotu" za 10 poprawnych podmiotów z rzędu)
+
+### Części Zdania w Grze
+
+* **Podmiot (Subject)**: Kto lub co wykonuje czynność
+* **Orzeczenie (Predicate)**: Czynność wykonywana przez podmiot
+* **Przydawka (Adjective/Adverbial modifier)**: Określenie rzeczownika lub innego przysłówka
+* **Dopełnienie (Object)**: Rzeczownik lub zaimek bezpośrednio lub pośrednio związany z czynnością orzeczenia
+* **Okolicznik (Adverbial)**: Określenie okoliczności, w jakich odbywa się czynność:
+  - Okolicznik Miejsca (gdzie?)
+  - Okolicznik Czasu (kiedy?)
+  - Okolicznik Sposobu (jak?)
+  - Okolicznik Celu (po co? w jakim celu?)
+  - Okolicznik Przyczyny (dlaczego?)
+
+## Instalacja i Uruchomienie
+
+### Wymagania
+- Git
+- Docker
+- Docker Compose
+
+### Kroki instalacji
+
+1. Sklonuj repozytorium:
+   ```bash
+   git clone https://github.com/twojuser/czesci-zdania.git
+   cd czesci-zdania
+   ```
+
+2. Uruchom kontenery za pomocą Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Otwórz przeglądarkę i przejdź pod adres:
+   ```
+   http://localhost:8080
+   ```
+
+### Tryb Offline
+
+Aplikacja działa również offline dzięki Service Worker. Po pierwszym załadowaniu, możesz korzystać z gry nawet bez dostępu do internetu.
+
+## Technologie
+
+- Frontend: HTML5, CSS3, JavaScript (ES6+)
+- Backend: Node.js 20 + Express 4
+- Konteneryzacja: Docker + docker-compose
+- Baza danych: MongoDB (dla wyników) + Redis (cache)
+
+## Rozwój Projektu
+
+Projekt jest w aktywnym rozwoju. Planowane funkcjonalności:
+- Tryb multiplayer (wyzwania klasowe)
+- Edytor zdań dla nauczycieli
+- Rozszerzona baza zdań generowana przez AI
+
+## Bezpieczeństwo i Prywatność
+
+Gra nie wymaga rejestracji ani logowania. Wyniki są zapisywane lokalnie i pseudonimizowane.
 
 ### `data/sentences_pl.json`
 
 Plik JSON zawierający listę zdań. Każde zdanie to obiekt z polami:
 
 *   `id`: Unikalny identyfikator zdania.
-*   `text`: Pełna treść zdania.
-*   `words`: Lista słów w zdaniu, gdzie każde słowo to obiekt z polami:
-    *   `text`: Słowo.
-    *   `part`: Część zdania (np. "Podmiot", "Orzeczenie", "Przydawka", "Dopełnienie", "Okolicznik"). 
+*   `sentence`: Pełna treść zdania.
+*   `level`: Poziom trudności zdania (1-3).
+*   `tokens`: Lista tokenów w zdaniu, gdzie każdy token to obiekt z polami:
+    *   `word`: Słowo lub fraza.
+    *   `part`: Część zdania (np. "Podmiot", "Orzeczenie", "Przydawka", "Dopełnienie", "Okolicznik Miejsca", "Okolicznik Czasu", "Okolicznik Sposobu", "Okolicznik Celu", "Okolicznik Przyczyny"). 
