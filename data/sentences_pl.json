@@ -323,5 +323,511 @@
       {"word": "zupę", "part": "Dopełnienie"},
       {"word": "w dużym garnku", "part": "Okolicznik Miejsca"}
     ]
+  },
+  {
+    "id": 31,
+    "sentence": "Wiatr porusza liśćmi.",
+    "level": 1,
+    "tokens": [
+      {"word": "Wiatr", "part": "Podmiot"},
+      {"word": "porusza", "part": "Orzeczenie"},
+      {"word": "liśćmi", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 32,
+    "sentence": "Ogrodnik podlewa kwiaty.",
+    "level": 1,
+    "tokens": [
+      {"word": "Ogrodnik", "part": "Podmiot"},
+      {"word": "podlewa", "part": "Orzeczenie"},
+      {"word": "kwiaty", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 33,
+    "sentence": "Malarz tworzy obraz.",
+    "level": 1,
+    "tokens": [
+      {"word": "Malarz", "part": "Podmiot"},
+      {"word": "tworzy", "part": "Orzeczenie"},
+      {"word": "obraz", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 34,
+    "sentence": "Krawiec szyje ubranie.",
+    "level": 1,
+    "tokens": [
+      {"word": "Krawiec", "part": "Podmiot"},
+      {"word": "szyje", "part": "Orzeczenie"},
+      {"word": "ubranie", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 35,
+    "sentence": "Pilny uczeń odrabia zadanie.",
+    "level": 2,
+    "tokens": [
+      {"word": "Pilny", "part": "Przydawka"},
+      {"word": "uczeń", "part": "Podmiot"},
+      {"word": "odrabia", "part": "Orzeczenie"},
+      {"word": "zadanie", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 36,
+    "sentence": "Mądra sowa obserwuje mysz.",
+    "level": 2,
+    "tokens": [
+      {"word": "Mądra", "part": "Przydawka"},
+      {"word": "sowa", "part": "Podmiot"},
+      {"word": "obserwuje", "part": "Orzeczenie"},
+      {"word": "mysz", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 37,
+    "sentence": "Srebrny księżyc oświetla drogę.",
+    "level": 2,
+    "tokens": [
+      {"word": "Srebrny", "part": "Przydawka"},
+      {"word": "księżyc", "part": "Podmiot"},
+      {"word": "oświetla", "part": "Orzeczenie"},
+      {"word": "drogę", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 38,
+    "sentence": "Pracowita mrówka buduje mrowisko.",
+    "level": 2,
+    "tokens": [
+      {"word": "Pracowita", "part": "Przydawka"},
+      {"word": "mrówka", "part": "Podmiot"},
+      {"word": "buduje", "part": "Orzeczenie"},
+      {"word": "mrowisko", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 39,
+    "sentence": "Dziadek czyta gazetę w fotelu.",
+    "level": 3,
+    "tokens": [
+      {"word": "Dziadek", "part": "Podmiot"},
+      {"word": "czyta", "part": "Orzeczenie"},
+      {"word": "gazetę", "part": "Dopełnienie"},
+      {"word": "w fotelu", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 40,
+    "sentence": "Dzieci bawią się wesoło w parku.",
+    "level": 3,
+    "tokens": [
+      {"word": "Dzieci", "part": "Podmiot"},
+      {"word": "bawią się", "part": "Orzeczenie"},
+      {"word": "wesoło", "part": "Okolicznik Sposobu"},
+      {"word": "w parku", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 41,
+    "sentence": "Mały kotek śpi spokojnie na parapecie.",
+    "level": 3,
+    "tokens": [
+      {"word": "Mały", "part": "Przydawka"},
+      {"word": "kotek", "part": "Podmiot"},
+      {"word": "śpi", "part": "Orzeczenie"},
+      {"word": "spokojnie", "part": "Okolicznik Sposobu"},
+      {"word": "na parapecie", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 42,
+    "sentence": "Uczniowie piszą test z matematyki.",
+    "level": 3,
+    "tokens": [
+      {"word": "Uczniowie", "part": "Podmiot"},
+      {"word": "piszą", "part": "Orzeczenie"},
+      {"word": "test", "part": "Dopełnienie"},
+      {"word": "z matematyki", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 43,
+    "sentence": "Sportowiec trenuje ciężko dla medalu.",
+    "level": 3,
+    "tokens": [
+      {"word": "Sportowiec", "part": "Podmiot"},
+      {"word": "trenuje", "part": "Orzeczenie"},
+      {"word": "ciężko", "part": "Okolicznik Sposobu"},
+      {"word": "dla medalu", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 44,
+    "sentence": "Piekarz wcześnie piecze chleb.",
+    "level": 3,
+    "tokens": [
+      {"word": "Piekarz", "part": "Podmiot"},
+      {"word": "wcześnie", "part": "Okolicznik Czasu"},
+      {"word": "piecze", "part": "Orzeczenie"},
+      {"word": "chleb", "part": "Dopełnienie"}
+    ]
+  },
+  {
+    "id": 45,
+    "sentence": "Rybak łowi ryby w jeziorze.",
+    "level": 3,
+    "tokens": [
+      {"word": "Rybak", "part": "Podmiot"},
+      {"word": "łowi", "part": "Orzeczenie"},
+      {"word": "ryby", "part": "Dopełnienie"},
+      {"word": "w jeziorze", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 46,
+    "sentence": "Uczeń starannie pisze wypracowanie dla nauczyciela.",
+    "level": 3,
+    "tokens": [
+      {"word": "Uczeń", "part": "Podmiot"},
+      {"word": "starannie", "part": "Okolicznik Sposobu"},
+      {"word": "pisze", "part": "Orzeczenie"},
+      {"word": "wypracowanie", "part": "Dopełnienie"},
+      {"word": "dla nauczyciela", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 47,
+    "sentence": "Turyści zwiedzają zamek z przewodnikiem.",
+    "level": 3,
+    "tokens": [
+      {"word": "Turyści", "part": "Podmiot"},
+      {"word": "zwiedzają", "part": "Orzeczenie"},
+      {"word": "zamek", "part": "Dopełnienie"},
+      {"word": "z przewodnikiem", "part": "Okolicznik Sposobu"}
+    ]
+  },
+  {
+    "id": 48,
+    "sentence": "Babcia opowiada bajkę przed snem.",
+    "level": 3,
+    "tokens": [
+      {"word": "Babcia", "part": "Podmiot"},
+      {"word": "opowiada", "part": "Orzeczenie"},
+      {"word": "bajkę", "part": "Dopełnienie"},
+      {"word": "przed snem", "part": "Okolicznik Czasu"}
+    ]
+  },
+  {
+    "id": 49,
+    "sentence": "Ptaki odlatują na południe z powodu zimy.",
+    "level": 3,
+    "tokens": [
+      {"word": "Ptaki", "part": "Podmiot"},
+      {"word": "odlatują", "part": "Orzeczenie"},
+      {"word": "na południe", "part": "Okolicznik Miejsca"},
+      {"word": "z powodu zimy", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 50,
+    "sentence": "Dzieci uczą się pilnie do sprawdzianu.",
+    "level": 3,
+    "tokens": [
+      {"word": "Dzieci", "part": "Podmiot"},
+      {"word": "uczą się", "part": "Orzeczenie"},
+      {"word": "pilnie", "part": "Okolicznik Sposobu"},
+      {"word": "do sprawdzianu", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 51,
+    "sentence": "Mama wczoraj kupiła prezent w sklepie.",
+    "level": 3,
+    "tokens": [
+      {"word": "Mama", "part": "Podmiot"},
+      {"word": "wczoraj", "part": "Okolicznik Czasu"},
+      {"word": "kupiła", "part": "Orzeczenie"},
+      {"word": "prezent", "part": "Dopełnienie"},
+      {"word": "w sklepie", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 52,
+    "sentence": "Harcerze rozpalili ognisko w lesie wieczorem.",
+    "level": 3,
+    "tokens": [
+      {"word": "Harcerze", "part": "Podmiot"},
+      {"word": "rozpalili", "part": "Orzeczenie"},
+      {"word": "ognisko", "part": "Dopełnienie"},
+      {"word": "w lesie", "part": "Okolicznik Miejsca"},
+      {"word": "wieczorem", "part": "Okolicznik Czasu"}
+    ]
+  },
+  {
+    "id": 53,
+    "sentence": "Chłopiec spóźnił się przez korki.",
+    "level": 3,
+    "tokens": [
+      {"word": "Chłopiec", "part": "Podmiot"},
+      {"word": "spóźnił się", "part": "Orzeczenie"},
+      {"word": "przez korki", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 54,
+    "sentence": "Sportowcy ćwiczą codziennie na stadionie dla zwycięstwa.",
+    "level": 3,
+    "tokens": [
+      {"word": "Sportowcy", "part": "Podmiot"},
+      {"word": "ćwiczą", "part": "Orzeczenie"},
+      {"word": "codziennie", "part": "Okolicznik Czasu"},
+      {"word": "na stadionie", "part": "Okolicznik Miejsca"},
+      {"word": "dla zwycięstwa", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 55,
+    "sentence": "Kasia głośno śpiewa w chórze ze szczęścia.",
+    "level": 3,
+    "tokens": [
+      {"word": "Kasia", "part": "Podmiot"},
+      {"word": "głośno", "part": "Okolicznik Sposobu"},
+      {"word": "śpiewa", "part": "Orzeczenie"},
+      {"word": "w chórze", "part": "Okolicznik Miejsca"},
+      {"word": "ze szczęścia", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 56,
+    "sentence": "Pies szczeka radośnie na podwórku.",
+    "level": 3,
+    "tokens": [
+      {"word": "Pies", "part": "Podmiot"},
+      {"word": "szczeka", "part": "Orzeczenie"},
+      {"word": "radośnie", "part": "Okolicznik Sposobu"},
+      {"word": "na podwórku", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 57,
+    "sentence": "Artysta maluje obraz pędzlem dla galerii.",
+    "level": 3,
+    "tokens": [
+      {"word": "Artysta", "part": "Podmiot"},
+      {"word": "maluje", "part": "Orzeczenie"},
+      {"word": "obraz", "part": "Dopełnienie"},
+      {"word": "pędzlem", "part": "Okolicznik Sposobu"},
+      {"word": "dla galerii", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 58,
+    "sentence": "Ogrodnik podlewa kwiaty rano z konewki.",
+    "level": 3,
+    "tokens": [
+      {"word": "Ogrodnik", "part": "Podmiot"},
+      {"word": "podlewa", "part": "Orzeczenie"},
+      {"word": "kwiaty", "part": "Dopełnienie"},
+      {"word": "rano", "part": "Okolicznik Czasu"},
+      {"word": "z konewki", "part": "Okolicznik Sposobu"}
+    ]
+  },
+  {
+    "id": 59,
+    "sentence": "Dziewczynka płacze głośno z bólu.",
+    "level": 3,
+    "tokens": [
+      {"word": "Dziewczynka", "part": "Podmiot"},
+      {"word": "płacze", "part": "Orzeczenie"},
+      {"word": "głośno", "part": "Okolicznik Sposobu"},
+      {"word": "z bólu", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 60,
+    "sentence": "Rodzina wyjeżdża latem nad morze na wakacje.",
+    "level": 3,
+    "tokens": [
+      {"word": "Rodzina", "part": "Podmiot"},
+      {"word": "wyjeżdża", "part": "Orzeczenie"},
+      {"word": "latem", "part": "Okolicznik Czasu"},
+      {"word": "nad morze", "part": "Okolicznik Miejsca"},
+      {"word": "na wakacje", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 61,
+    "sentence": "Żyrafa gra w szachy z pingwinem.",
+    "level": 3,
+    "tokens": [
+      {"word": "Żyrafa", "part": "Podmiot"},
+      {"word": "gra", "part": "Orzeczenie"},
+      {"word": "w szachy", "part": "Dopełnienie"},
+      {"word": "z pingwinem", "part": "Okolicznik Sposobu"}
+    ]
+  },
+  {
+    "id": 62,
+    "sentence": "Śmieszny krokodyl tańczy walca na lodowisku.",
+    "level": 3,
+    "tokens": [
+      {"word": "Śmieszny", "part": "Przydawka"},
+      {"word": "krokodyl", "part": "Podmiot"},
+      {"word": "tańczy", "part": "Orzeczenie"},
+      {"word": "walca", "part": "Dopełnienie"},
+      {"word": "na lodowisku", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 63,
+    "sentence": "Zaspany komputer pije kawę o poranku.",
+    "level": 3,
+    "tokens": [
+      {"word": "Zaspany", "part": "Przydawka"},
+      {"word": "komputer", "part": "Podmiot"},
+      {"word": "pije", "part": "Orzeczenie"},
+      {"word": "kawę", "part": "Dopełnienie"},
+      {"word": "o poranku", "part": "Okolicznik Czasu"}
+    ]
+  },
+  {
+    "id": 64,
+    "sentence": "Marchewka prowadzi samochód do warzywniaka.",
+    "level": 3,
+    "tokens": [
+      {"word": "Marchewka", "part": "Podmiot"},
+      {"word": "prowadzi", "part": "Orzeczenie"},
+      {"word": "samochód", "part": "Dopełnienie"},
+      {"word": "do warzywniaka", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 65,
+    "sentence": "Wesoły księżyc skacze przez chmury z radości.",
+    "level": 3,
+    "tokens": [
+      {"word": "Wesoły", "part": "Przydawka"},
+      {"word": "księżyc", "part": "Podmiot"},
+      {"word": "skacze", "part": "Orzeczenie"},
+      {"word": "przez chmury", "part": "Okolicznik Miejsca"},
+      {"word": "z radości", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 66,
+    "sentence": "Książka głośno śmieje się z dowcipu.",
+    "level": 3,
+    "tokens": [
+      {"word": "Książka", "part": "Podmiot"},
+      {"word": "głośno", "part": "Okolicznik Sposobu"},
+      {"word": "śmieje się", "part": "Orzeczenie"},
+      {"word": "z dowcipu", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 67,
+    "sentence": "Zdenerwowany budzik ucieka przed czasem.",
+    "level": 3,
+    "tokens": [
+      {"word": "Zdenerwowany", "part": "Przydawka"},
+      {"word": "budzik", "part": "Podmiot"},
+      {"word": "ucieka", "part": "Orzeczenie"},
+      {"word": "przed czasem", "part": "Okolicznik Czasu"}
+    ]
+  },
+  {
+    "id": 68,
+    "sentence": "Telefon robi pompki dla zdrowia.",
+    "level": 3,
+    "tokens": [
+      {"word": "Telefon", "part": "Podmiot"},
+      {"word": "robi", "part": "Orzeczenie"},
+      {"word": "pompki", "part": "Dopełnienie"},
+      {"word": "dla zdrowia", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 69,
+    "sentence": "Zmęczony słoń jeździ na rolkach w parku.",
+    "level": 3,
+    "tokens": [
+      {"word": "Zmęczony", "part": "Przydawka"},
+      {"word": "słoń", "part": "Podmiot"},
+      {"word": "jeździ", "part": "Orzeczenie"},
+      {"word": "na rolkach", "part": "Okolicznik Sposobu"},
+      {"word": "w parku", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 70,
+    "sentence": "Czekolada pisze wiersze wieczorem z natchnienia.",
+    "level": 3,
+    "tokens": [
+      {"word": "Czekolada", "part": "Podmiot"},
+      {"word": "pisze", "part": "Orzeczenie"},
+      {"word": "wiersze", "part": "Dopełnienie"},
+      {"word": "wieczorem", "part": "Okolicznik Czasu"},
+      {"word": "z natchnienia", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 71,
+    "sentence": "Rozbrykany deszcz tańczy na dachu ze słońcem.",
+    "level": 3,
+    "tokens": [
+      {"word": "Rozbrykany", "part": "Przydawka"},
+      {"word": "deszcz", "part": "Podmiot"},
+      {"word": "tańczy", "part": "Orzeczenie"},
+      {"word": "na dachu", "part": "Okolicznik Miejsca"},
+      {"word": "ze słońcem", "part": "Okolicznik Sposobu"}
+    ]
+  },
+  {
+    "id": 72,
+    "sentence": "Skarpetki uciekają chyłkiem przed praniem.",
+    "level": 3,
+    "tokens": [
+      {"word": "Skarpetki", "part": "Podmiot"},
+      {"word": "uciekają", "part": "Orzeczenie"},
+      {"word": "chyłkiem", "part": "Okolicznik Sposobu"},
+      {"word": "przed praniem", "part": "Okolicznik Przyczyny"}
+    ]
+  },
+  {
+    "id": 73,
+    "sentence": "Zegar gotuje obiad dla minut.",
+    "level": 3,
+    "tokens": [
+      {"word": "Zegar", "part": "Podmiot"},
+      {"word": "gotuje", "part": "Orzeczenie"},
+      {"word": "obiad", "part": "Dopełnienie"},
+      {"word": "dla minut", "part": "Okolicznik Celu"}
+    ]
+  },
+  {
+    "id": 74,
+    "sentence": "Szczęśliwy ser śpiewa serenady pod oknem.",
+    "level": 3,
+    "tokens": [
+      {"word": "Szczęśliwy", "part": "Przydawka"},
+      {"word": "ser", "part": "Podmiot"},
+      {"word": "śpiewa", "part": "Orzeczenie"},
+      {"word": "serenady", "part": "Dopełnienie"},
+      {"word": "pod oknem", "part": "Okolicznik Miejsca"}
+    ]
+  },
+  {
+    "id": 75,
+    "sentence": "Poduszka trenuje karate w nocy.",
+    "level": 3,
+    "tokens": [
+      {"word": "Poduszka", "part": "Podmiot"},
+      {"word": "trenuje", "part": "Orzeczenie"},
+      {"word": "karate", "part": "Dopełnienie"},
+      {"word": "w nocy", "part": "Okolicznik Czasu"}
+    ]
   }
 ] 
