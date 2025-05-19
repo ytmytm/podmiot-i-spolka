@@ -1,7 +1,5 @@
 # PRD – Gra „Części Zdania”
 
-*(Podsumowanie na koniec dnia: Ukończono wstępne prace nad motywem UI (zgodnie z P-02 z `PLAN.md`) oraz konfiguracją Docker dla backendu (P-10 z `PLAN.md`). Te elementy wspierają cele MVP dotyczące interfejsu użytkownika oraz wymagań niefunkcjonalnych. Główne priorytety na kolejny dzień to rozwój rdzenia rozgrywki i pozostałych zadań o wysokim priorytecie z `PLAN.md`.)*
-
 ## 1. Wstęp
 
 Celem projektu jest zwiększenie motywacji i efektywności nauki rozbioru gramatycznego poprzez interaktywną grę webową, która łączy naukę z elementami zabawy i natychmiastową informacją zwrotną.
