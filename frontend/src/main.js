@@ -56,6 +56,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let totalGameScore = 0;
     let gameInProgress = false;
     let sentenceLoadTime = null; // For timing sentence completion
+    let completedSentences = 0; // Track number of completed sentences
+    const SENTENCES_PER_GAME = 10; // Number of sentences to complete before ending game
 
     // --- Parts of Speech Available for Dragging ---
     // These should ideally match the parts used in sentences_pl.json
@@ -172,6 +174,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const fallbackResponse = await fetch(`/api/sentences/random?level=${highestAvailableLevel}`);
                     if (!fallbackResponse.ok) throw new Error('Failed to fetch fallback sentence');
                     currentSentenceData = await fallbackResponse.json();
+                    
+                    // Add notification about using lower level sentences
+                    const notification = document.createElement('div');
+                    notification.className = 'level-notification';
+                    notification.textContent = `Gratulacje! Osiągnąłeś poziom ${currentLevel}, ale obecnie dostępne są tylko zdania do poziomu ${highestAvailableLevel}. Pracujemy nad dodaniem trudniejszych zdań!`;
+                    sentenceDisplayContainer.insertBefore(notification, sentenceDisplayContainer.firstChild);
                 } else {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -207,6 +215,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function startGame() {
         totalGameScore = 0;
+        completedSentences = 0; // Reset completed sentences counter
         gameInProgress = true;
         mainHeader.textContent = 'Analiza Zdania';
         resultsArea.style.display = 'none';
@@ -214,6 +223,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         controlsArea.style.display = 'block';
         const existingResultView = document.querySelector('.result-view-container');
         if (existingResultView) existingResultView.remove();
+        const existingFinishButton = document.getElementById('finish-game-button');
+        if (existingFinishButton) existingFinishButton.remove();
         updatePlayerStatsUI(); // Update stats display at game start
         loadSentence(); // Load first sentence
         renderDragCards();
@@ -282,6 +293,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const scoreResult = scorer(currentSentenceData.tokens, userAnswers);
         totalGameScore += scoreResult.totalScore;
+        completedSentences++; // Increment completed sentences counter
         
         // Add points to gamification system
         const gamificationUpdate = addXP(scoreResult.totalScore);
@@ -353,7 +365,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         resultsArea.style.display = 'block';
         checkAnswersButton.style.display = 'none';
-        nextSentenceButton.style.display = 'inline-block';
+        
+        // Show appropriate button based on game progress
+        if (completedSentences >= SENTENCES_PER_GAME) {
+            nextSentenceButton.style.display = 'none';
+            const finishGameButton = document.createElement('button');
+            finishGameButton.id = 'finish-game-button';
+            finishGameButton.textContent = 'Zakończ Grę';
+            finishGameButton.onclick = showGameResults;
+            controlsArea.appendChild(finishGameButton);
+        } else {
+            nextSentenceButton.style.display = 'inline-block';
+            // Add progress indicator
+            const progressText = document.createElement('p');
+            progressText.className = 'game-progress';
+            progressText.textContent = `Zdanie ${completedSentences} z ${SENTENCES_PER_GAME}`;
+            feedbackContainer.insertBefore(progressText, feedbackContainer.firstChild);
+        }
     });
 
     nextSentenceButton.addEventListener('click', () => {

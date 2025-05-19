@@ -460,4 +460,35 @@ footer {
     white-space: pre-wrap; /* Allow text to wrap but preserve spaces */
     max-width: 250px; /* Prevent excessively wide tooltips */
 }
-/* --- End Tooltip Styles --- */ 
+/* --- End Tooltip Styles --- */
+
+.game-progress {
+    font-size: 1.1em;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-medium);
+    font-weight: bold;
+}
+
+#finish-game-button {
+    background-color: var(--color-secondary);
+    color: var(--color-text-dark);
+    font-weight: bold;
+    padding: var(--spacing-small) var(--spacing-medium);
+    margin-top: var(--spacing-medium);
+}
+
+#finish-game-button:hover {
+    background-color: #cda0e8; /* Darker shade of secondary */
+}
+
+.level-notification {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    padding: var(--spacing-medium);
+    margin-bottom: var(--spacing-medium);
+    border-radius: var(--border-radius-default);
+    text-align: center;
+    font-size: 0.9em;
+    border: 1px solid #e6dbb0;
+} 
