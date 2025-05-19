@@ -52,6 +52,48 @@ Gra polega na przeciąganiu etykiet z częściami zdania na odpowiednie słowa. 
    http://localhost:8080
    ```
 
+### Instalacja na Heroku
+
+1. Zainstaluj Heroku CLI:
+   ```bash
+   # Na Ubuntu/Debian
+   curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+   # Na macOS
+   brew tap heroku/brew && brew install heroku
+   ```
+
+2. Zaloguj się do Heroku:
+   ```bash
+   heroku login
+   ```
+
+3. Utwórz aplikację na Heroku:
+   ```bash
+   heroku create czesci-zdania
+   ```
+
+4. Dodaj dodatki MongoDB i Redis:
+   ```bash
+   heroku addons:create mongolab:sandbox
+   heroku addons:create heroku-redis:hobby-dev
+   ```
+
+5. Skonfiguruj zmienne środowiskowe:
+   ```bash
+   heroku config:set NODE_ENV=production
+   heroku config:set PORT=80
+   ```
+
+6. Wdróż aplikację:
+   ```bash
+   git push heroku main
+   ```
+
+7. Otwórz aplikację w przeglądarce:
+   ```bash
+   heroku open
+   ```
+
 ### Tryb Offline
 
 Aplikacja działa również offline dzięki Service Worker. Po pierwszym załadowaniu, możesz korzystać z gry nawet bez dostępu do internetu.
