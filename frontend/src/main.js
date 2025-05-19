@@ -409,9 +409,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         mainHeader.textContent = 'Wyniki Gry';
         updatePlayerStatsUI(); // Ensure stats are up-to-date on results screen
         
-        // The existing onPlayAgainCallback for ResultView is just startGame.
-        // The onStartNewGameCallback for ResultView will now use the shared resetAndStartNewGame.
-        const resultViewElement = ResultView(totalGameScore, startGame, resetAndStartNewGame);
+        // Only pass resetAndStartNewGame as the play again callback
+        const resultViewElement = ResultView(totalGameScore, resetAndStartNewGame);
         const appContainer = document.querySelector('.app-container');
         const footer = appContainer.querySelector('footer');
         if (footer) {

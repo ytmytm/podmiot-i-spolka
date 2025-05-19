@@ -340,13 +340,26 @@ button#next-sentence-button:hover {
     margin-right: var(--spacing-small);
 }
 
-/* Specific style for play again button if needed, e.g., primary action color */
+/* Style for play again button */
 #play-again-button {
     background-color: var(--color-secondary);
-     /* color: var(--color-text-light); /* Ensure contrast if changing background */
+    color: var(--color-text-dark);
+    font-size: 1.1em;
+    padding: var(--spacing-medium) var(--spacing-large);
+    margin-top: var(--spacing-large);
 }
+
 #play-again-button:hover {
-    background-color: #cda0e8; /* Darker shade of secondary */
+    background-color: #cda0e8;
+}
+
+/* Style for the continue button - now it's the safe action */
+#continue-game-button {
+    background-color: var(--color-secondary);
+    color: var(--color-text-dark);
+}
+#continue-game-button:hover {
+    background-color: #cda0e8;
 }
 
 /* Style for the new "Start New Game" button */
