@@ -10,7 +10,7 @@ Zaplanowanie i opis architektury gry edukacyjnej "Podmiot i Spółka" przeznaczo
 
 * **Frontend:** HTML5, CSS3 (TailwindCSS), JavaScript (ES6+), Vite jako bundler.
 * **Silnik Drag & Drop:** Native HTML5 Drag and Drop API lub biblioteka interact.js.
-* **Backend (opcjonalny):** Node.js 20 + Express 4, integracja z OpenAI API do generacji nowych zdań, MongoDB do przechowywania wyników, Redis do cache.
+* **Backend (opcjonalny):** Node.js 20 + Express 4, integracja z OpenAI API do generacji nowych zdań, Redis do cache.
 * **Konteneryzacja:** Docker oraz docker‑compose do orkiestracji usług (`frontend`, `backend`, `db`, `proxy`).
 * **Testy:** Jest + @testing-library/dom.
 
@@ -83,7 +83,6 @@ project/
 
 * **frontend:** `node:20-alpine`, etap build + static nginx.
 * **backend:** `node:20-alpine`.
-* **db:** `mongo:7`.
 * **proxy:** `nginx:1.25`.
 
 ## Bezpieczeństwo i prywatność

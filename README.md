@@ -73,24 +73,18 @@ Interaktywna gra edukacyjna pomagająca uczniom 5 klasy szkoły podstawowej w na
    heroku create podmiot-i-spolka
    ```
 
-4. Dodaj dodatki MongoDB i Redis:
-   ```bash
-   heroku addons:create mongolab:sandbox
-   heroku addons:create heroku-redis:hobby-dev
-   ```
-
-5. Skonfiguruj zmienne środowiskowe:
+4. Skonfiguruj zmienne środowiskowe:
    ```bash
    heroku config:set NODE_ENV=production
    heroku config:set PORT=80
    ```
 
-6. Wdróż aplikację:
+5. Wdróż aplikację:
    ```bash
    git push heroku main
    ```
 
-7. Otwórz aplikację w przeglądarce:
+6. Otwórz aplikację w przeglądarce:
    ```bash
    heroku open
    ```
@@ -104,7 +98,6 @@ Aplikacja działa również offline dzięki Service Worker. Po pierwszym załado
 - Frontend: HTML5, CSS3, JavaScript (ES6+)
 - Backend: Node.js 20 + Express 4
 - Konteneryzacja: Docker + docker-compose
-- Baza danych: MongoDB (dla wyników) + Redis (cache)
 
 ## Rozwój Projektu
 
