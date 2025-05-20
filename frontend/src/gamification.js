@@ -3,8 +3,8 @@
  * Manages player XP, levels, and potentially badges.
  */
 
-const XP_KEY = 'czesciZdaniaXP';
-const LEVEL_KEY = 'czesciZdaniaLevel';
+const XP_KEY = 'podmiotISpolkaXP';
+const LEVEL_KEY = 'podmiotISpolkaLevel';
 const XP_PER_LEVEL = 100;
 
 // --- Badge Definitions and Storage ---
@@ -97,8 +97,8 @@ export const BADGES = {
     }
 };
 
-const EARNED_BADGES_KEY = 'czesciZdaniaEarnedBadges';
-const BADGE_PROGRESS_KEY_PREFIX = 'czesciZdaniaBadgeProgress_';
+const EARNED_BADGES_KEY = 'podmiotISpolkaBadges';
+const BADGE_PROGRESS_KEY_PREFIX = 'podmiotISpolka_badge_progress_';
 
 /**
  * Retrieves current XP from localStorage.

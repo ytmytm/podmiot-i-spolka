@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         totalGameScore = 0;
         completedSentences = 0; // Reset completed sentences counter
         gameInProgress = true;
-        mainHeader.textContent = 'Analiza Zdania';
+        mainHeader.textContent = 'Podmiot i Spółka';
         resultsArea.style.display = 'none';
         gameArea.style.display = 'flex';
         controlsArea.style.display = 'block';
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // --- Render Functions ---
     function renderDragCards() {
-        partsTrayContainer.innerHTML = '<h2>Części Zdania:</h2>'; // Clear previous cards if any
+        partsTrayContainer.innerHTML = '<h2>Twoja ekipa do rozbioru zdań:</h2>'; // Clear previous cards if any
         availablePartsOfSpeech.forEach(part => {
             const card = DragCard(part, part); // Label is same as part for now
             card.setAttribute('data-part-of-speech', part);
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         gameArea.style.display = 'none';
         controlsArea.style.display = 'none';
         resultsArea.style.display = 'none';
-        mainHeader.textContent = 'Wyniki Gry';
+        mainHeader.textContent = 'Podmiot i Spółka - Wyniki';
         updatePlayerStatsUI(); // Ensure stats are up-to-date on results screen
         
         // Only pass resetAndStartNewGame as the play again callback

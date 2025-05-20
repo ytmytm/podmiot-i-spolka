@@ -1,10 +1,11 @@
-# Części Zdania - Gra Edukacyjna
+# Podmiot i Spółka
+## Twoja ekipa do rozbioru zdań
 
 Interaktywna gra edukacyjna pomagająca uczniom 5 klasy szkoły podstawowej w nauce rozpoznawania części zdania. Poprzez wciągającą mechanikę drag & drop oraz system punktów i odznak, uczniowie mogą ćwiczyć analizę składniową zdań w języku polskim.
 
 ## O Grze
 
-Gra polega na przeciąganiu etykiet z częściami zdania na odpowiednie słowa. Za każde poprawne przyporządkowanie gracz otrzymuje punkty XP, które pozwalają mu awansować na wyższe poziomy. Dodatkowo, za szczególne osiągnięcia przyznawane są specjalne odznaki.
+"Podmiot i Spółka" to gra polegająca na przeciąganiu etykiet z częściami zdania na odpowiednie słowa. Za każde poprawne przyporządkowanie gracz otrzymuje punkty XP, które pozwalają mu awansować na wyższe poziomy. Dodatkowo, za szczególne osiągnięcia przyznawane są specjalne odznaki.
 
 ### System Punktacji
 
@@ -69,7 +70,7 @@ Gra polega na przeciąganiu etykiet z częściami zdania na odpowiednie słowa. 
 
 3. Utwórz aplikację na Heroku:
    ```bash
-   heroku create czesci-zdania
+   heroku create podmiot-i-spolka
    ```
 
 4. Dodaj dodatki MongoDB i Redis:
@@ -125,4 +126,4 @@ Plik JSON zawierający listę zdań. Każde zdanie to obiekt z polami:
 *   `level`: Poziom trudności zdania (1-3).
 *   `tokens`: Lista tokenów w zdaniu, gdzie każdy token to obiekt z polami:
     *   `word`: Słowo lub fraza.
-    *   `part`: Część zdania (np. "Podmiot", "Orzeczenie", "Przydawka", "Dopełnienie", "Okolicznik Miejsca", "Okolicznik Czasu", "Okolicznik Sposobu", "Okolicznik Celu", "Okolicznik Przyczyny"). 
+    *   `part`: Część zdania (np. "Podmiot", "Orzeczenie", "Przydawka", "Dopełnienie", "Okolicznik Miejsca", "Okolicznik Czasu", "Okolicznik Sposobu", "Okolicznik Celu", "Okolicznik Przyczyny").

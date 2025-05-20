@@ -1,8 +1,8 @@
-# PRD – Gra „Części Zdania”
+# PRD – Gra „Podmiot i Spółka"
 
 ## 1. Wstęp
 
-Celem projektu jest zwiększenie motywacji i efektywności nauki rozbioru gramatycznego poprzez interaktywną grę webową, która łączy naukę z elementami zabawy i natychmiastową informacją zwrotną.
+Celem projektu jest zwiększenie motywacji i efektywności nauki rozbioru gramatycznego poprzez interaktywną grę webową „Podmiot i Spółka" z podtytułem „Twoja ekipa do rozbioru zdań", która łączy naukę z elementami zabawy i natychmiastową informacją zwrotną.
 
 ## 2. Uzasadnienie problemu
 
@@ -12,7 +12,7 @@ Celem projektu jest zwiększenie motywacji i efektywności nauki rozbioru gramat
 
 ## 3. Wizja produktu
 
-Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele zyskują panel raportów. Gra ma prosty interfejs „przeciągnij‑i‑upuść” oraz system punktów i poziomów, który zachęca do regularnych powtórek.
+Uczniowie uczą się, bawiąc się przy komputerze lub tablecie, a nauczyciele zyskują panel raportów. Gra ma prosty interfejs „przeciągnij‑i‑upuść" oraz system punktów i poziomów, który zachęca do regularnych powtórek.
 
 ## 4. Cele SMART
 

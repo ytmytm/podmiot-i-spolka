@@ -2,8 +2,8 @@
   "onboardingSteps": [
     {
       "id": "step1_welcome",
-      "title": "Witaj w Grze 'Części Zdania'!",
-      "text": "Naucz się rozpoznawać części zdania, bawiąc się! Przeciągaj etykiety na słowa i zdobywaj punkty.",
+      "title": "Witaj w grze 'Podmiot i Spółka'!",
+      "text": "Dołącz do ekipy do rozbioru zdań! Przeciągaj etykiety na słowa i zdobywaj punkty.",
       "targetElement": null,
       "imageUrl": null,
       "buttonText": "Zaczynajmy!"

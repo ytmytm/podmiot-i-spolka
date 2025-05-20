@@ -4,7 +4,7 @@
 
 ## Cel techniczny
 
-Zaplanowanie i opis architektury gry edukacyjnej "Części zdania" przeznaczonej dla uczniów 5 klasy SP.
+Zaplanowanie i opis architektury gry edukacyjnej "Podmiot i Spółka" przeznaczonej dla uczniów 5 klasy SP.
 
 ## Stack technologiczny
 
