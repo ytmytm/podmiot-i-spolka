@@ -19,14 +19,20 @@ RUN npm install
 COPY backend/. ./
 COPY data ../data
 
+# Create nginx html directory first
+RUN mkdir -p /usr/share/nginx/html
+
 # Set up frontend
 WORKDIR /app
 COPY frontend/public ./frontend/public
 COPY frontend/src ./frontend/src
-COPY frontend/nginx.conf /etc/nginx/nginx.conf
-
-# Copy data to frontend location
 COPY data ./frontend/data
+
+# Copy frontend files to nginx directory
+RUN cp -r /app/frontend/* /usr/share/nginx/html/
+
+# Copy nginx configuration
+COPY frontend/nginx.conf /etc/nginx/nginx.conf
 
 # Create startup script that runs both services
 RUN echo '#!/bin/sh' > /start.sh && \
@@ -35,9 +41,6 @@ RUN echo '#!/bin/sh' > /start.sh && \
     echo 'cd /app/backend && npm start &' >> /start.sh && \
     echo 'wait' >> /start.sh && \
     chmod +x /start.sh
-
-# Copy frontend files to nginx directory
-RUN cp -r /app/frontend/* /usr/share/nginx/html/
 
 # Port will be set dynamically by Render.com via $PORT environment variable
 
