@@ -12,8 +12,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// Mount the sentences router under the /sentences path
+// Mount the sentences router under both /sentences and /api/sentences paths
 app.use('/sentences', sentencesRouter);
+app.use('/api/sentences', sentencesRouter);
 
 // Basic root endpoint
 app.get('/', (req, res) => {
