@@ -15,9 +15,9 @@ COPY backend/package*.json ./backend/
 WORKDIR /app/backend
 RUN npm install
 
-# Copy backend source
+# Copy backend source and data
 COPY backend/. ./
-COPY data ../data
+COPY data ./data
 
 # Create nginx html directory first
 RUN mkdir -p /usr/share/nginx/html
@@ -38,7 +38,7 @@ COPY frontend/nginx.conf /etc/nginx/nginx.conf
 RUN echo '#!/bin/sh' > /start.sh && \
     echo 'sed -i "s/listen 80;/listen $PORT;/" /etc/nginx/nginx.conf' >> /start.sh && \
     echo 'nginx &' >> /start.sh && \
-    echo 'cd /app/backend && npm start &' >> /start.sh && \
+    echo 'cd /app/backend && PORT=3000 npm start &' >> /start.sh && \
     echo 'wait' >> /start.sh && \
     chmod +x /start.sh
 

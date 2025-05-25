@@ -17,7 +17,7 @@ router.use(cors());
 // Let's assume the `data` directory is at the same level as the `backend` directory 
 // when the server process starts (e.g. project_root/data and project_root/backend).
 // This path needs to be correct relative to where `server.js` is run or an absolute path in the container.
-const sentencesFilePath = path.join(__dirname, '../../data/sentences_pl.json');
+const sentencesFilePath = path.join(__dirname, '../data/sentences_pl.json');
 
 let sentencesCache = [];
 let lastModifiedTime = 0;
