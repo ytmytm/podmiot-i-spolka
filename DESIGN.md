@@ -1,7 +1,5 @@
 # DESIGN
 
-*(Podsumowanie na koniec dnia: Definicja motywu UI (P-02 z `PLAN.md`) została sfinalizowana i jest odzwierciedlona w sekcji "UI/UX". Konfiguracja Dockerfile dla backendu (P-10 z `PLAN.md`) jest zgodna z opisaną architekturą kontenerów. Kolejne prace projektowe będą wspierać implementację zadań o wysokim priorytecie z `PLAN.md`.)*
-
 ## Cel techniczny
 
 Zaplanowanie i opis architektury gry edukacyjnej "Podmiot i Spółka" przeznaczonej dla uczniów 5 klasy SP.

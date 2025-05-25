@@ -39,8 +39,8 @@ Interaktywna gra edukacyjna pomagająca uczniom 5 klasy szkoły podstawowej w na
 
 1. Sklonuj repozytorium:
    ```bash
-   git clone https://github.com/twojuser/czesci-zdania.git
-   cd czesci-zdania
+   git clone https://github.com/ytmytm/podmiot-i-spolka
+   cd podmiot-i-spolka
    ```
 
 2. Uruchom kontenery za pomocą Docker Compose:
